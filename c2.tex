@@ -1,0 +1,618 @@
+\section{矩阵}
+
+\subsection{矩阵与向量}
+\paragraph{}
+假设有一个$m \times n$即$m$行以及$n$列的元素组成的阵列称之为\textbf{矩阵}, 形如
+\[
+A=
+  \begin{bmatrix}
+    a_{11} & a_{12} & \cdots &  a_{1n} \\
+    a_{21} & a_{22} & \cdots &  a_{2n} \\
+    \vdots & \vdots & \ddots &  \vdots \\
+    a_{m1} & a_{m2} & \cdots &  a_{mn}
+  \end{bmatrix}
+\]
+可以简单的记为$A = (a_{ij})$，特别的一个$n\times n$的矩阵，称之为\textbf{方阵}. 矩阵也可以看成是一个$R^{m\times n}$的空间，集合论里提到了集合，域，再到$m \times n$维称之为空间. 
+
+\paragraph{}
+如果一个矩阵只有一行或者一列，分别称之为\textbf{行向量}和\textbf{列向量}，例如行向量$(x_1, x_2, \cdots, x_n)$, 列向量
+$$
+ \begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
+\end{bmatrix}
+$$
+通常将列向量称为向量，用加粗的字母表示，行向量用列向量的转置表示, 例如
+$$
+\textbf{x}^T = (x_1, x_2, \cdots, x_n), \textbf{y} =   \begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
+\end{bmatrix}
+$$
+矩阵的转置，将在之后作说明. 因此矩阵同时也可以使用向量来表示, 将距阵
+\[
+A=
+  \begin{bmatrix}
+    a_{11} & a_{12} & \cdots &  a_{1n} \\
+    a_{21} & a_{22} & \cdots &  a_{2n} \\
+    \vdots & \vdots & \ddots &  \vdots \\
+    a_{m1} & a_{m2} & \cdots &  a_{mn}
+  \end{bmatrix}
+\]
+简化表示为，$A = (\textbf{a}_1, \textbf{a}_2, \cdots, \textbf{a}_n)$, 或者
+$$
+A = \begin{bmatrix}
+    \textbf{a}_1^T \\
+    \textbf{a}_2^T \\
+    \vdots  \\
+    \textbf{a}_n^T \\
+  \end{bmatrix}
+$$
+
+
+\subsection{代数运算}
+\paragraph{}
+\textbf{加法} \: 对于$m\times n$的矩阵$A$和$B$，$A + B$也是一个$m\times n$的矩阵，令$A = (a_{ij}), B = (b_{ij})$，则$A + B = (a_{ij} + b_{ij})$. 这里将一个全是零的矩阵称之为零矩阵，也就是矩阵加法的单位元，记为0， 则$A + 0 = A$.  例如
+$$
+ \begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 0 & 0 & 0 
+  \end{bmatrix}  + 
+  \begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    4 & 3 & 2 & 1 
+  \end{bmatrix}  = 
+  \begin{bmatrix}
+    2 & 4 & 6 & 8 \\
+    4 & 3 & 2 & 1 
+  \end{bmatrix}
+$$
+
+\paragraph{}
+\textbf{标量乘法} \: 设$A = (a_{ij})$是一个$m\times n$的矩阵, $\alpha$是实数，$\alpha A$也是一个$m\times n$的矩阵，并且$\alpha A = (\alpha a_{ij})$. 例如
+$$
+2 \cdot 
+ \begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 0 & 0 
+  \end{bmatrix}  = 
+  \begin{bmatrix}
+    2 & 4 & 6 & 8 \\
+    0 & 2 & 0 & 0 
+  \end{bmatrix}
+$$
+
+\paragraph{}
+\textbf{矩阵乘法} \: 若$A = (a_{ij})$是一个$m\times n$的矩阵，$B = (b_{ij})$是一个$n\times p$的矩阵，那么$C = A \cdot B = (c_{ij})$是一个$m\times p$的矩阵，注意到矩阵的乘法只有当第一个矩阵的列数和第二个矩阵的行数相同才可以, 所以一般而言$A\cdot B \neq B \cdot A$.  那么$c_{ij} = \textbf{a}_i^T \cdot \textbf{b}_j$ ，在第1章里有提到向量的内积， 即
+$$
+\textbf{x} \cdot \textbf{y} = \sum_{i = 1}^n x_i y_i
+$$，例如
+$$
+\begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 0 & 0 
+  \end{bmatrix}  \cdot 
+  \begin{bmatrix}
+    1 & 1 \\
+    2 & 0 \\ 
+    3 & 1 \\
+    5 & 1 \\
+  \end{bmatrix} = 
+  \begin{bmatrix}
+    1 \cdot 1 + 2 \cdot 2 + 3 \cdot 3 + 4 \cdot 5 & 1 \cdot 1 + 2 \cdot 0 + 3 \cdot 1 + 4 \cdot 1 \\
+    0 \cdot 1 + 1 \cdot 2 + 0 \cdot 3 + 0 \cdot 5 & 0 \cdot 1 + 1 \cdot 0 + 0 \cdot 1 + 0 \cdot 1
+  \end{bmatrix} = 
+  \begin{bmatrix}
+    34 & 8 \\
+    2 & 0
+  \end{bmatrix}
+$$
+特别的，如果一个矩阵是$n\times n$的方阵，这个方阵的对角元素都是$1$，这样的矩阵称之为\textbf{单位矩阵}，记为$I$. 设有一个$m\times n$的矩阵$A$，那么$A\cdot I = A$. $I \cdot A = A$，其中前一个单位矩阵$I$是$n\times n$的矩阵，后一个单位矩阵$I$是一个$m\times m$的矩阵. 单位矩阵$I$形如
+$$
+I = \begin{bmatrix}
+    1 & &  \\
+       & \ddots & \\ 
+       & & 1 \\
+  \end{bmatrix}
+$$
+为了方便，将$I$的第$j$列，记为向量$\textbf{e}_j$, 也就是$j$行的元素是$1$(单位矩阵$i=j$时元素为1)，其它的都是$0$，单位矩阵$I$可以简化表示为$I = (\textbf{e}_1, \textbf{e}_2, \cdots, \textbf{e}_n)$.
+\newline
+设$A$是一个$n\times n$的矩阵，如果存在一个矩阵$A^{-1} \cdot A = I$而且$A\cdot A^{-1} = I$，将$A^{-1}$称为$A$的\textbf{逆}. 如果一个矩阵存在逆，称这个矩阵为\textbf{可逆}的矩阵(有时也称为\textbf{非奇异的}).
+
+\paragraph{}
+\textbf{转置} \:  若$A = (a_{ij})$是一个$m\times n$的矩阵，那么将$B = A^T$记为$A$的转置，$B$是一个$n \times m$的矩阵，并且$B = (b_{ij}) = (a_{ji})$. 例如
+$$
+\begin{bmatrix}
+    34 & 8 \\
+    2 & 0
+  \end{bmatrix}^T = 
+  \begin{bmatrix}
+    34 & 2 \\
+    8 & 0
+  \end{bmatrix}
+$$
+以及
+$$
+\begin{bmatrix}
+    1 & 2 & 3 & 4\\
+    4 & 3  & 2 & 1
+  \end{bmatrix}^T = 
+  \begin{bmatrix}
+    1 & 4 \\
+    2 & 3 \\
+    3 & 2 \\
+    4 & 1
+  \end{bmatrix}
+$$
+
+\paragraph{}
+矩阵的加法和乘法满足分配率和结合率，但是只有加法满足交换率，乘法不满足交换率, 不过标量乘法满足交换率. 
+\begin{align*}
+& A + B  = B + A, \alpha A = A \alpha \\
+& A + (B + C) = (A + B) + C, A(BC) = (AB)C, \alpha (\beta A) = (\alpha \beta) A\\
+& A (B + C) = AB + AC, \alpha (A + B) = \alpha A + \alpha B
+\end{align*}
+
+\paragraph{}
+再介绍一下转置的一些性质
+\begin{align*}
+& (A^T)^T = A \\
+& (\alpha A)^T = \alpha A^T \\
+& (A + B)^T = A^T + B^T \\
+& (AB)^T = B^T A^T
+\end{align*}
+最后一条，可以使用向量来证明，令$A =  \begin{bmatrix}
+    \textbf{a}_1^T\\
+    \textbf{a}_2^T\\
+    \vdots \\
+     \textbf{a}_m^T
+  \end{bmatrix}, B = (\textbf{b}_1, \textbf{b}_2), \cdots, \textbf{b}_p$, 那么$(AB)^T = (c_{ij}), B^T A^T = (c_{ij}')$, 因为$c_{ij} = \textbf{a}_j^T \textbf{b}_i, c_{ij}' = \textbf{b}_i^T \textbf{a}_j$，所以$c_{ij} = c_{ij}'$，所以等式成立.
+
+\paragraph{}
+\textbf{矩阵的迹} \: 设一个$n\times n$的方阵$A$，它的迹为对角线上元素的和记为
+$$
+tr(A) = \sum_{i = 1}^n a_{ii}
+$$
+
+
+\subsection{初等变换}
+\paragraph{}
+\textbf{第一型初等变换} \: 交换两行，第一型初等矩阵形如
+$$
+ \begin{bmatrix}
+   1 &  & \cdots &  &  & 0 \\
+    & \ddots & &  & & \\
+    &  & 0 & 1 &  & \\
+    & & 1 & 0 & &  \\
+    &   & & & \ddots & \\
+    & & & & & 1 
+  \end{bmatrix}
+$$ 
+这类的矩阵，一般用符号$E$表示，为了区分，这里将第一型的记为$E_{I}$，设有这样的矩阵
+$$
+A =  \begin{bmatrix}
+    1 & 2 & 3 \\
+    0 & 0 & 4 \\
+    0 & 5 & 0
+  \end{bmatrix}, E_{I} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & 1 & 0  
+  \end{bmatrix}
+$$
+那么
+$$
+E_{I}A = \begin{bmatrix}
+    1 & 2 & 3 \\
+    0 & 5 & 0 \\
+    0 & 0 & 4
+  \end{bmatrix}
+$$
+可以看见，当左乘第一型的初等矩阵之后，$A$的第二行和第三行互换了.  初等矩阵是用于左乘，考察右乘的情况，那就变成交换两列. 例如
+$$
+AE_{I} = \begin{bmatrix}
+    1 & 3 & 2 \\
+    0 & 4 & 0 \\
+    0 & 0 & 5
+  \end{bmatrix}
+$$
+
+\paragraph{}
+\textbf{第二型初等变换} \:  某一行乘于某个标量，第二型初等矩阵形如
+$$
+ \begin{bmatrix}
+   1 &  & \cdots &  &  & 0 \\
+    & \ddots & &  & & \\
+    &  & 1 & 0 &  & \\
+    & & 0 & a & &  \\
+    &   & & & \ddots & \\
+    & & & & & 1 
+  \end{bmatrix}
+$$ 
+这里将第二型的记为$E_{II}$，例如这样的矩阵
+$$
+A =  \begin{bmatrix}
+    1 & 2 & 3 \\
+    0 & 4 & 2 \\
+    0 & 0 & 5
+  \end{bmatrix}, E_{II} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1/2 & 0 \\
+    0 & 0 & 1  
+  \end{bmatrix}
+$$
+那么
+$$
+E_{II}A =  \begin{bmatrix}
+    1 & 2 & 3 \\
+    0 & 2 & 1 \\
+    0 & 0 & 5
+  \end{bmatrix}
+$$
+可以看见，矩阵$A$的第二行的元素值，都乘与了$1/2$. 再考虑右乘
+$$
+AE_{II} =  \begin{bmatrix}
+    1 & 1 & 3 \\
+    0 & 2 & 2 \\
+    0 & 0 & 5
+  \end{bmatrix}
+$$
+也就是说，如果右乘第二型初等矩阵，那么第二列的值乘与了一个标量
+
+
+\paragraph{}
+\textbf{第三型初等变换} \:  将某一行的倍数加到另一行，这一类初等矩阵形如
+$$
+ \begin{bmatrix}
+   1 &  & \cdots &  &  & 0 \\
+    & \ddots & &  & & \\
+    &  & 1 & 0 &  & \\
+    & & 0 & 1 & &  \\
+    &  a & & & \ddots & \\
+    & & & & & 1 
+  \end{bmatrix}
+$$ 
+这里将第三型的记为$E_{III}$，例如这样的矩阵
+$$
+A =  \begin{bmatrix}
+    1 & 2 & 3 \\
+    0 & 4 & 2 \\
+    0 & 2 & 5
+  \end{bmatrix}, E_{III} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & -1/2 & 1  
+  \end{bmatrix}
+$$
+那么
+$$
+E_{III}A =  \begin{bmatrix}
+    1 & 2 & 3 \\
+    0 & 4 & 2 \\
+    0 & 0 & 4
+  \end{bmatrix}
+$$
+可以看见，矩阵$A$的第三行的元素值，都加上了第二行的$-1/2$. 再看右乘
+$$
+AE_{III} =  \begin{bmatrix}
+    1 & 1/2 & 3 \\
+    0 & 3 & 2 \\
+    0 & -1/2 & 5
+  \end{bmatrix}
+$$
+也就是说，如果右乘第三型初等矩阵，那么第二列的值都加上了第三列的$-1/2$. 
+
+\subsection{相似}
+相似矩阵是指若一个$n\times n$的矩阵$A$，存在一个$n\times n$的矩阵$P$并且$P$存在逆矩阵$P^{-1}$，使得
+$PAP^-1 = B$，这个矩阵$B$称为和$A$相似. 例如
+$$
+P = \begin{bmatrix}
+    1 & -1 \\
+    -1 & 2
+  \end{bmatrix}, P^{-1} = \begin{bmatrix}
+    2 & 1 \\
+    1 & 1
+  \end{bmatrix}, A =  \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+  \end{bmatrix}
+$$, 那么
+$$
+PAP^{-1} =  \begin{bmatrix}
+    -6 & 0 \\
+    16 & 11
+  \end{bmatrix}
+$$
+
+
+\subsection{方程组}
+\paragraph{}
+现实中很多问题，最后都可以转换成线程方程组来求解.  考虑一个$m\times n$的线性方程组
+$$
+\begin{array}{lcl}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = & b_1  \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = & b_2  \\
+ & \vdots &   \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & = & b_m  
+\end{array}
+$$
+这样的线性方程组，可以用矩阵表示成
+$$
+\begin{bmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+     &  & \vdots &  \\
+    a_{m1} & a_{m2} & \cdots & a_{mn} \\
+  \end{bmatrix} \cdot 
+  \begin{bmatrix}
+    x_{1}  \\
+    x_{2} \\
+    \vdots  \\
+    x_{m} \\
+  \end{bmatrix}  = \begin{bmatrix}
+    b_{1}  \\
+    b_{2} \\
+    \vdots  \\
+    b_{m} \\
+  \end{bmatrix} 
+$$
+用向量表示就是
+$$
+A\textbf{x} = \textbf{b}
+$$
+其中$$A$$就是方程数的系数矩阵，如果把右端项加入系数矩阵当中，就形成了\textbf{增广矩阵}
+$$
+\left[
+{\begin{array}{c|c}
+\begin{matrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+ & & \vdots &  \\
+a_{m1} & a_{m2} & \cdots & a_{mn} 
+\end{matrix}&
+\begin{matrix}
+b_1\\
+b_2 \\
+\vdots \\
+b_m 
+\end{matrix}
+\end{array}
+}
+\right]
+$$
+如果$A\textbf{x} = 0$，这样的方程组称之为\textbf{齐次线性方程组}. 齐次方程组必然有一个\textbf{平凡解}$(0, 0, \cdots, 0)$. 如果方程组非零解的话，称之为\textbf{非平凡解}
+
+\paragraph{}
+这里不介绍解方程组的方法，现代计算机可以很方便的求解. 因此只会介绍一些常见的矩阵的类型
+\subparagraph{}
+\textbf{三角形矩阵} \: 定义这样的一个$n\times n$的矩阵$A = (a_{ij})$，当$i < j$时，$a_{ij} = 0$, 称之为\textbf{上三角矩阵}, 相反的称之为\textbf{下三角矩阵}
+例如
+$$
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 4 & 5 \\
+0 & 0 & 6 
+\end{bmatrix}
+$$是上三角矩阵
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+2 & 4 & 0 \\
+3 & 5 & 6 
+\end{bmatrix}
+$$是一个下三角矩阵，特别的
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3 
+\end{bmatrix}
+$$即是上三角矩阵，也是下三角矩阵，也称之为\textbf{对角矩阵}
+\subparagraph{}
+\textbf{行阶梯矩阵} \: 定义这样的一个矩阵
+\begin{enumerate}
+\item 每一个非零行的第一个非零元为1
+\item 第$k$行的元素都不为0的话，如果有第$k+1$行，那么第$k + 1$行的0的个数大于第$k$行的0的个数
+\end{enumerate}
+例如
+$$
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 1 & 2 \\
+0 & 0 & 1 
+\end{bmatrix}, 
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 1 & 2 \\
+0 & 0 & 0
+\end{bmatrix}, 
+\begin{bmatrix}
+1 & 2 & 3 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{bmatrix}
+$$
+\subparagraph{}
+\textbf{行最简矩阵} \: 定义这样的一个矩阵，它是行阶梯矩阵，并且每一行的第一个非零元也就是1，是该列唯一的非零元, 例如
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix},
+\begin{bmatrix}
+1 & 2 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{bmatrix}, 
+\begin{bmatrix}
+1 & 2 & 0 & 0 & 3 \\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 0
+\end{bmatrix}
+$$
+\subparagraph{}
+\textbf{稀疏矩阵} \: 通常把一个矩阵的很多元素都是0的矩阵称之为\textbf{稀疏矩阵}, 也可以说如果是一个$n\times n$的矩阵，它的非零元素的个数是$O(n)$的话，可以看成是一个稀疏矩阵.
+
+
+\subsection{行列式}
+\paragraph{}
+对于一个$n\times n$的矩阵来说，矩阵的行列式，可以看成$n$维空间的平行体的体积, 当$n = 1$时，就是线的长度，$n = 2$时是平行四边行的面积，$n = 3$时是平行六面体的体积.
+
+\paragraph{}
+当把一个矩阵映射成一个实数的话，这样可以更方便的考察矩阵的特点以及矩阵之间的关系.  定义一个\textbf{行列式}, 对于一个$n\times n$的矩阵$A = (a_{ij})$, 它的行列式用符号表示为$det(A)$，行列式的计算的公式为
+$$
+det(A) = a_{i1}(-1)^{i+1} det(M_{i1}) + a_{i2} (-1)^{i+2} det(M_{i2}) + \cdots +  a_{in} (-1)^{i+n} det(M_{in})
+$$
+其中，$M_{in}$是某一行某个元素的\textbf{子式}, 它把元素所在的行和列去掉后的矩阵，形如
+$$
+M_{ij} = \begin{bmatrix}
+a_{11} & \cdots & a_{1(j-1)} & a_{1(j+1)} & \cdots & a_{1n} \\
+ & \vdots &  &  &  \\
+a_{(i-1)1} & \cdots & a_{(i-1)(j-1)} & a_{(i-1)(j+1)} & \cdots & a_{(i - 1)n} \\
+a_{(i+1)1} & \cdots & a_{(i+1)(j-1)} & a_{(i+1)(j+1)} & \cdots & a_{(i + 1)n} \\
+ & \vdots &  &  &  \\
+ a_{n1} & \cdots & a_{n(j-1)} & a_{n(j+1)} & \cdots & a_{nn} \\
+\end{bmatrix}
+$$
+定义\textbf{余子式}
+$$
+A_{ij} = (-1)^{i+j}det(M_{ij})
+$$
+那么可以简化表示为
+$$
+det(A) = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in}
+$$
+
+例如
+$$
+A = \begin{bmatrix}
+1 & 2 & 3 \\
+1 & 0 & 1 \\
+1 & 1 & 3
+\end{bmatrix}
+$$
+那么
+\begin{align*}
+det(A) &= 1 \cdot det(\begin{bmatrix}
+0 & 1 \\
+1 & 3
+\end{bmatrix}) - 2 \cdot det(\begin{bmatrix}
+1 & 1 \\
+1 & 3
+\end{bmatrix}) + 3 \cdot det(\begin{bmatrix}
+1 & 0 \\
+1 & 1
+\end{bmatrix})  \\
+& = 1 \cdot (0 \cdot 3 - 1 \cdot 1) - 2 \cdot (1 \cdot 3 - 1 \cdot 1) + 3 \cdot (1 \cdot 1 - 0 \cdot 1)  \\
+& = -2
+\end{align*}
+
+例如
+$$
+A = \begin{bmatrix}
+1 & 2 & 3 \\
+1 & 1 & 1 \\
+1 & 1 & 1
+\end{bmatrix}
+$$
+那么
+\begin{align*}
+det(A) &= 1 \cdot det(\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix}) - 2 \cdot det(\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix}) + 3 \cdot det(\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix})  \\
+& = 1 \cdot (1 \cdot 1 - 1 \cdot 1) - 2 \cdot (1 \cdot 1 - 1 \cdot 1) + 3 \cdot (1 \cdot 1 - 1 \cdot 1)  \\
+& =  0
+\end{align*}
+
+\paragraph{}
+接下来证明行列式的唯一性，根据行列式的定义，行列式是一定存在的，它是行列式的某一行的各个元素乘于它的余子式，需要证明的是不管选取哪一行，矩阵的行列式都是同一个值, 容易证明，无论选取哪一行$2\times 2$和$3 \times 3$的矩阵的行列式只有一个.  因此假设在$n > 3$的情况下，如果$(n - 1) \times (n - 1)$和$(n - 2) \times (n - 2)$ 的矩阵的行列式唯一(即与选取哪一行无关)，是否可以推导出$n \times n$的矩阵行列式唯一.  考察第$i$和$j$行的情况下, 其中$i < j$
+\begin{align*}
+& det_i(A) = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in} \\
+& det_j(A) = a_{j1}A_{j1} + a_{j2}A_{j2} + \cdots + a_{jn}A_{jn} 
+\end{align*}
+再把其中的余子式展开($det_i(A)$中的余子式，选择第$j$行, $det_j(A)$中的余子式，选择第$i$行展开), 因为前面已经假设$(n - 1) \times (n - 1)$和$(n - 2) \times (n - 2)$唯一，所以它们选择哪一行展开是没有区别的。
+\begin{align*}
+& det_i(A) = a_{i1}(-1)^{i+1}(a_{j2}A_{(i1)(j2)} + a_{j3}A_{(i1)(j3)} + \cdots + a_{nn}A_{(i1)(nn)}) + \cdots  \\
+& det_j(A) = a_{j1}A_{j1} + a_{j2}(-1)^{j+2}(a_{i1}A_{(j2)(i1)} + a_{i3}A_{(j2)(i3)} + \cdots) + \cdots
+\end{align*}
+提取其中相似的两项
+$$
+(-1)^{i+1}a_{i1}a_{j2}A_{(i1)(j2)},  (-1)^{j+2}a_{j2}a_{i1}A_{(j2)(i1)}
+$$
+而
+\begin{align*}
+(-1)^{i+1}a_{i1}a_{j2}A_{(i1)(j2)} & = (-1)^{i+1}(-1)^{j + 2 - 2}a_{i1}a_{j2}det(M_{(i1)(j2)}) \\
+& (-1)^{j+2}a_{j2}a_{i1}A_{(j2)(i1)} & = (-1)^{j+2}(-1)^{i+1 }a_{j2}a_{i1}det(M_{(j2)(i1)}) 
+\end{align*}
+其中$M_{(i1)(j2)}$ 和$M_{(j2)(i1)}$ 是 $(n -2) \times (n-2)$ 的矩阵，它们的元素相同.  根据我们的假设那么$det(M_{(i1)(j2)}) = det(M_{(j2)(i1)}$. 而$(-1)^{j+2}(-1)^{i+1} = (-1)^{i+1}(-1)^{j}$这两个乘数的符号相同. 其它的类似. 由此我们可以证明，当$n \times n$时，同样的行列式是唯一的. 
+
+\subsubsection{矩阵的逆}
+\paragraph{}
+如果有一$n\times n$的矩阵$A$, 定义一个新的矩阵
+$$
+adj A = \begin{bmatrix}
+A_{11} & \cdots & A_{n1} \\
+& \vdots & \\
+A_{1n} & \cdots & A_{nn} 
+\end{bmatrix}
+$$
+其中$A_{ij}$就是元素$a_{ij}$的余子式, 这样的矩阵$adj A$称为矩阵$A$的\textbf{伴随矩阵}. 那么设$A' = A \cdot adj A = (a'_{ij})$, 其中
+$$
+a'_{ij} = a_{i1} \cdot A_{j1} + a_{i2} \cdot A_{j2} + \cdots + a_{in} \cdot A_{jn}
+$$
+先看如果$i = j$的情况下，就是行列式的定义，所以如果$i = j$也就是$A'$的对角元素的值是$det A$，再考虑一下$i \neq j$的情况, 那么可以把$a'_{ij}$看成这样的一个矩阵$A''$，其中第$i$行和第$j$行的元素相同, 因为这种情况下, $a_{ik} = a_{jk}$，所以说$det(A'') = a'_{ij}$.  因此现在考察一个矩阵$A''$，它的第$i$行和第$j$行的元素相同，分别计算选择第$i$行和第$j$行的行列式的值.
+\begin{align*}
+& det_i(A'') = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in} \\
+& det_j(A'') = a_{j1}A_{j1} + a_{j2}A_{j2} + \cdots + a_{jn}A_{jn} 
+\end{align*}
+选取其中的第$1$项, 并且假设$i < j$, 再展开
+\begin{align*}
+(-1)^{i+1}a_{i1}det(M_{i1})  & = (-1)^{i+1}a_{i1}(\cdots +  a_{j2}A_{(i1)(j2)} + \cdots )   \\
+& =  (-1)^{i+1}a_{i1}(\cdots + (-1)^{j+2 - 2} a_{j2} det(M_{(i1)(j2)}) + \cdots ) \\
+ (-1)^{j+1}a_{j1}det(M_{j1}) & = (-1)^{j+1}a_{j1}(\cdots +  a_{i2}A_{(j1)(i2)} + \cdots ) \\
+ & =  (-1)^{j+1}a_{j1}(\cdots +  (-1)^{i+2-1} a_{i2} det(M_{(j1)(i2)}) + \cdots ) 
+\end{align*}
+
+因为$a_{i1} = a_{j1}, a_{i2} = a_{j2}$
+并且
+\begin{align*}
+(-1)^{j+1}(-1)^{i + 2 - 1} & = (-1)^{i+j+2} \\
+(-1)^{i+1}(-1)^{j+2 - 2} & = (-1)^{i+j+1}
+\end{align*}
+两个符号相反，因此其它的类似的，那么
+$$
+det_i(A'') = -det_j(A'')
+$$
+但是我们知道，一个矩阵的行列式存在并且唯一，那么$det(A'') = 0$.  回过头来, 
+$$
+A \cdot adj A = det(A) I
+$$
+因此，可以发现$A \cdot \frac{1}{det(A)} adj A = I$，如果$det(A) \neq 0$， 也就是说$\frac{1}{det(A)} adj A$就是矩阵$A$的逆. 矩阵$A$的逆存在的充分必要条件是$det(A) \neq 0$.
+
+\subsubsection{行列式的性质}
+之前已经证明了行列式的几个性质，这里简要的罗列出来
+\begin{enumerate}
+\item 如果一个$n\times n$的矩阵$A$，有两行的元素相同，那么$det(A) = 0$
+\item 如果一个$n\times n$的矩阵$A$, $det(A) = 0$那么$A$是奇异的(不可逆), 反之就是$A$是非奇异的(可逆的).
+\item $det(AB) = det(A)det(B)$, 这个性质可以自己证明. 因此可以说明，如果只有两个矩阵都是非奇异的，那么它们的积才是非奇异的，只要有任何一个是奇异的，它们的积也是奇异的.
+\item $det(A^T) = det(A)$
+\end{enumerate}
+
+额外的，一般来讲$det(A) + det(B) \neq det(A + B)$
+
+
+
+
+

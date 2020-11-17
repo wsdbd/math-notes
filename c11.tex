@@ -1,0 +1,336 @@
+\section{积分}
+
+\subsection{黎曼积分}
+\paragraph{}
+对于函数$f(x)$, 定义闭区间$[a, b]$的一个划分$\textbf{P}$, 以此得到的点$x_0, x_1, \cdots, x_n$
+$$
+a = x_0 \leq x_1 \leq \cdots \leq x_{n-1} \leq x_n = b
+$$
+令$\Delta x_i = x_i - x_{i - 1}$, 其中$(i = 1, 2, \cdots, n)$，令$\lambda = \sup\{ \Delta x_i \}$,  $[x_i, x_{i-1}]$区间中有一个使得函数值最大值的点$\xi_i$，将函数值记为
+$$
+M_i = \sup f(\xi_i)
+$$
+使函数值最小的点，将函数值记为
+$$
+m_i = \inf f(\xi_i)
+$$
+将
+$$
+\overline{I} = \sum_{i = 1}^n M_i \Delta x_i
+$$
+称为\textbf{上积分}. 以及
+$$
+\underline{I} = \sum_{i = 1}^n m_i \Delta x_i
+$$
+称为\textbf{下积分}. 简化记号的话，$f(x)$在闭区间$[a, b]$的上积分和下积分并且有一个划分$P$，可以分别用下积分$s(f, P)$, 上积分$S(f, P)$，很多书中的记法不太一样，一般书说会有说明，有些地方用$L(f, P)$和$U(f, P)$来表示. 直观的理解的话，直角坐标中$f(x)$在闭区间$[a, b]$中的面积，对于确定的划分$P$，总是比上积分的面积小，并且总是比下积分要大. 因此对于任意一个划分$P$中的区间$[x_i, x_{i-1}]$中的任意一点$\xi$，那么
+$$
+\underline{I} \leq   I_\xi  \leq \overline{I}
+$$
+或者记为
+$$
+s(f, P) \leq \sigma(f, P, \xi) \leq S(f, P)
+$$
+之前定义了$\lambda = \sup\{ \Delta x_i \}$，将$\lambda$是某个划分$P$中的的最大区间长度，有时候为了表示和$P$的关系，也记为$\lambda(P)$，这里就简单的用$\lambda$来表示.
+将
+$$
+I = \lim_{\lambda \to 0} \sum_{i = 1}^n f(\xi_i) \Delta x_i
+$$
+如果极限存在的话，称$I$为\textbf{黎曼积分}, 也就是我们通常讲的\textbf{定积分}, 或者简要的称为\textbf{积分}. 可以用符号记为
+$$
+I = \int_a^b f(x) \mathrm{d}x
+$$
+如果函数$f(x)$在闭区间$[a, b]$内存在积分，称$f(x)$为\textbf{可积函数}.
+
+\paragraph{}
+如果函数$f(x)$对于任意的划分$P$，使得
+$$
+\lim_{\lambda \to 0} s(f, P) = \lim_{\lambda \to 0} S(f, P)
+$$
+那么，函数就是可积的，并且它的积分和上积分以及下积分相同. 
+
+\paragraph{}
+前面提到闭区间$[a, b]$的一个划分$\textbf{P}$, 以此得到的点$x_0, x_1, \cdots, x_n$，如果往这个分割里再加一些点，形成另一个划分$P^*$，也就是说$P \subset P^*$，那么称$P*$为$P$的\textbf{精细划分}.
+
+\paragraph{}
+如果$P^*$是$P$的精细划分，那么
+$$
+s(f, P*) \geq s(f, P), \, S(f, P*) \leq S(f, P)
+$$
+
+\paragraph{}
+通过精细划分，可以得到黎曼积分的另一个等价的定义, 对于任意的$\varepsilon > 0$, 存在一个数$I$和一个划分$P_n$，使得其任何的精细划分$P_{n++}^*$，都满足
+$$
+|\sum_{i = 1}^{n++} f(\xi_i) \Delta x_i - I| < \varepsilon
+$$
+这个数$I$称为黎曼积分.
+
+\subsection{黎曼-斯蒂尔杰斯积分}
+\paragraph{}
+\textbf{黎曼-斯蒂尔杰斯积分}是黎曼积分的一种推广，将其中的$\Delta x_i = x_i - x_{i - 1}$替换成$g(x_i) - g(x_{i-1})$，由此其记号为
+$$
+\int_a^b f(x)\mathrm{d} g(x)
+$$
+注意$g(x)$不一定可导，不一定是连续的. 如果$g(x) = x$，那么就是黎曼积分，如果$g(x)$可导，那么黎曼-斯蒂尔杰斯积分可以转换为黎曼积分
+$$
+\int_a^b f(x) g'(x) \mathrm{d} x
+$$
+
+\subsection{可积函数}
+
+\paragraph{}
+为了方便，这里指的可积指的是黎曼可积，或者黎曼-斯蒂尔杰斯可积. 黎曼-斯蒂尔杰斯作为黎曼可积的推广，如果是黎曼可积的，那么必然是黎曼-斯蒂尔杰斯可积的. 
+
+\paragraph{}
+\textbf{a}. 可积函数的一个必要条件是在闭区间$[a, b]$内有界. 必要条件是指，如果函数在$[a, b]$内不是有界的，那么肯定是黎曼不可积的. 有界是可积的一个前提条件.
+
+\paragraph{}
+\textbf{b}. 可积的一个充分必要条件是，在闭区间$[a, b]$内有界的函数$f(x)$, 对于任意的$\varepsilon > 0$，存在$\delta > 0$，使得对于一个划分$P$, $\lambda(P) < \delta$，满足
+$$
+|\sum_{i = 1}^n |M_i - m_i| \Delta x_i | < \varepsilon
+$$
+
+
+\paragraph{}
+\textbf{c}. 闭区间内的连续函数可积
+
+\paragraph{}
+\textbf{d}. 如果函数在闭区间$[a, b]$内只有有限个点不连续，那么函数是可积的.
+
+\paragraph{}
+\textbf{e}. 闭区间上的单调函数是可积的.
+
+
+\subsection{积分的性质}
+\begin{enumerate}
+\item $\int_a^b (\alpha f + \beta g)(x) \mathrm{d} x = \alpha \int_a^b f(x) \mathrm{d} x + \beta \int_a^b g(x) \mathrm{d} x$
+\item 如果$a < b < c$，那么$\int_a^c f(x) \mathrm{d} x = \int_a^b f(x)\mathrm{d} x + \int_b^c f(x) \mathrm{d} x$
+\item $\int_a^b f(x) \mathrm{d} (g(x) + h(x)) = \int_a^b f(x) \mathrm{d} g(x) + \int_a^b f(x) \mathrm{d} h(x)$
+\item 如果在闭区间$[a, b]$内，$f(x) \leq g(x)$那么$\int_a^b f(x) \mathrm{d} x \leq \int_a^b g(x) \mathrm{d} x$
+\item 如果在闭区间在内$[a, b]$内，$|f(x)| \leq \alpha$, $\alpha$为任意的正数，那么
+$$
+|\int_a^b f(x) \mathrm{d} g(x)| \leq \alpha \cdot (g(b) - g(a))
+$$
+\end{enumerate}
+
+\subsection{分部积分}
+\paragraph{}
+同(10.3节)不定积分一样，如果函数存在原函数的话，那么可以用不定积分类似的方法
+$$
+\int_a^b f(x) g'(x) \mathrm{d} x = f(x) g(x) - \int_a^b g(x) f'(x) \mathrm{d} x
+$$
+
+\subsection{黎曼-斯蒂尔杰斯积分的例子}
+\paragraph{}
+将下面的函数称为\textbf{单位阶跃函数}, 注意不同的地方对单位阶跃函数的定义不同，这里使用下面的这种定义:
+$$
+I(x) = \begin{cases}
+0 & \quad x \leq 0 \\
+1 & \quad x > 0
+\end{cases}
+$$
+
+\paragraph{}
+对于函数$f(x)$在闭区间$[a, b]$内，其中有一个点$s$, $f(x)$在$s$点连续，设$g(x) = I(x - s)$，那么
+$$
+\int_a^b f(x) \mathrm{d} g(x) = f(s)
+$$
+这个积分就是黎曼不可积，但是黎曼-斯蒂尔杰斯可积的例子. 也就是说，类似于如果$g(x)$是阶跃函数的话，其积分就变成级数，是黎曼不可积的，也正是因此有特别一类函数不可积，才需要扩展到黎曼-斯蒂尔杰斯积分.
+
+\subsection{积分中值定理}
+\paragraph{}
+设$f(x)$在闭区间$[a, b]$内可积，并且在闭区间内$f(x)$有界，$m \leq f(x) \leq M$，那么在$[m, M]$内存在一个数$\mu $，使得
+$$
+\int_a^b f(x) \mathrm{d} x = (b - a) \mu
+$$
+这个就是\textbf{积分中值定理}, 特别的，如果$f(x)$在$[a, b]$内的连续，那么在$[a, b]$内存在一个点$p$，即$a \leq p \leq b$，那么
+$$
+\int_a^b f(x) \mathrm{d} x = (b - a) f(p)
+$$
+
+\paragraph{}
+将中值定理进行推广的话，设$f(x), g(x)$在$[a, b]$内可积，并且在区间内，$m = \inf f(x), M = \sup f(x)$，如果$g(x)$在区间$[a, b]$内$f(x) \leq 0$或者$f(x) \geq 0$，那么存在一个数$\mu$并且$m \leq \mu \leq M$使得
+$$
+\int_a^b f(x) g(x) \mathrm{d} x = \mu \int_a^b g(x) \mathrm{d} x
+$$
+特别的，如果$f(x)$在$[a, b]$内连续，那么存在一个点$a \leq p \leq b$，使得
+$$
+\int_a^b f(x) g(x) \mathrm{d} x = f(p) \int_a^b g(x) \mathrm{d} x
+$$
+这个定理称为\textbf{积分第一中值定理}. 
+
+\paragraph{}
+若$f(x), g(x)$在闭区间$[a, b]$内可积，并且$f(x)$单调递增或者单调递减，那么存在一个点$\xi$，$a \leq \xi \leq b$，使得
+$$
+\int_a^b f(x) g(x) \mathrm{d} x = f(a) \int_a^\xi g(x) \mathrm{d} x + f(b) \int_\xi^b g(x) \mathrm{d} x
+$$
+称这个定理为\textbf{积分第二中值定理}. 并且如果$g(x) = 1$，那么公式就变成
+$$
+\int_a^b f(x)\mathrm{d} x = f(a) (\xi - a) + f(b) (b - \xi)
+$$
+
+
+\subsection{微积分基本定理}
+
+\paragraph{}
+如果在闭区间$[a, b]$上的函数$f(x)$存在原函数$F(x)$，那么
+$$
+\int_a^b f(x) \mathrm{d} x = F(b) - F(a)
+$$
+这个定理称为\textbf{微积分基本定理}. 也称为\textbf{牛顿-莱布尼茨公式}. 这个定理将积分和原函数联系在一起. 这个公式也可以记为
+$$
+\int_a^b f(x) \mathrm{d} x = F(x)|_a^b
+$$
+
+\paragraph{}
+如果闭区间$[a, b]$上，$f(x)$的原函数是$F(x)$, $g(x)$的原函数是$G(x)$，那么
+$$
+\int_a^b F(x) g(x) \mathrm{d}x = F(b)G(b) - F(a)G(a) - \int_a^b f(x)G(x) \mathrm{d}x
+$$
+
+\subsection{泰勒公式余项的积分形式}
+\paragraph{}
+对于一个函数$f(x)$， 并且$f(x)$是$n+1$阶可导的，假设通过泰勒公式在$a$点展开，如果有任何一个点$b$，那么例如$f'(x)$在闭区间$[a, b]$的积分为
+\begin{align*}
+f(b)  - f(a) & = \int_a^b f'(x)  \mathrm{d} x \\
+& =  \int_a^b f'(x) (x - b)' \mathrm{d} x \\
+& =  f'(x) (x - b) |_a^b - \int_a^b (x - b) f''(x) \mathrm{d} x \\
+& =  f'(a)(b - a) - \frac{1}{2} \int_a^b ((x - b)^2)' f''(x) \mathrm{d} x \\
+& =  f'(a)(b - a) - \frac{1}{2} (x-b)^2 f''(x)|_a^b + \frac{1}{2} \int_a^b (x - b)^2 f^{(3)}(x) \mathrm{d} x \\
+& =  f'(a)(b - a) + \frac{1}{2} (b-a)^2 f''(a) + \frac{1}{2} \int_a^b (x - b)^2 f^{(3)}(x) \mathrm{d} x \\
+& \quad \vdots \\
+& = f'(a) (b - a) + \frac{f''(a)}{2!} (b - a)^2 + \cdots + \frac{f^{(n)}(a)}{n!} (b - a)^n + \frac{1}{n!} \int_a^b f^{(n+1)} (x) (b - x)^n \mathrm{d} x
+\end{align*}
+其中的余项
+$$
+R_n(x) = \frac{1}{n!} \int_a^b f^{(n+1)} (x) (b - x)^n \mathrm{d} x
+$$
+这个余项，称为泰勒展开的积分余项，同时根据积分第一中值定理，即
+$$
+\int_a^b f(x) g(x) \mathrm{d} x = f(p) \int_a^b g(x) \mathrm{d} x
+$$
+因此
+\begin{align*}
+R_n(x) & = \frac{1}{n!} \int_a^b f^{(n+1)} (x) (b - x)^n \mathrm{d} x \\
+& =  \frac{1}{n!} f^{(n+1)}(p) \int_a^b (b - x)^n \mathrm{d} x \\
+& = \frac{1}{n!} f^{(n+1)}(p)   (- \frac{1}{n+1} (b - x)^{(n + 1)})|_a^b \\
+& = \frac{1}{n!} f^{(n+1)}(p) \frac{1}{n+1} (b - a)^{(n+1)} \\
+& = \frac{f^{(n+1)}(p)}{(n+1)!} (b - a)^{(n+1)}
+\end{align*}
+这个和之前(9.3节)用微分中值定理推导的泰勒公式的余项一样了.
+
+
+\subsection{反常积分}
+\subsubsection{反常积分}
+\paragraph{}
+如果函数$f(x)$定义域为$[a, +\infty)$，并且$f(x)$在定义内任意的一个点$b$，使得$f(x)$在$[a, b]$内总是可积的，那么
+$$
+\int_a^{+\infty} f(x) \mathrm{d} x := \lim_{b\to +\infty} \int_a^b f(x) \mathrm{d} x
+$$
+如果极限存在，这个积分称为$f(x)$在区间$[a, +\infty)$上的\textbf{反常黎曼积分}，一般简单的称为\textbf{反常积分}，也称为\textbf{无空限广义积分}. 
+
+\paragraph{}
+更一般的定义，在半开区间$[a, \omega)$，$\omega$可以是任意大于$a$的实数或者$+\infty$，当然同样的对于$(\omega, a]$也是一样的，不过这样为了方便，讨论积分上限是某个实数的或者无穷的情况. 如果极限
+$$
+\int_a^\omega f(x) \mathrm{d} x := \lim_{b \to \omega^-} \int_a^b f(x) \mathrm{d} x
+$$
+存在的话，称为$f(x)$在区间$[a, \omega)$上的\textbf{反常积分}.  类似的
+$$
+\int_\omega^b f(x) \mathrm{d} x := \lim_{a \to \omega^+} \int_a^b f(x) \mathrm{d} x
+$$
+也称为反常积分.  如果$\omega$是具体的实数，那么又称之为\textbf{瑕积分}. 其中的$\omega$称为瑕点. 如果存在反常积分，也称为反常积分\textbf{收敛}，反之称为\textbf{发散}的.
+
+\paragraph{}
+例如
+\begin{align*}
+\int_1^{+\infty} \frac{1}{x^2} \mathrm{d} x & = \lim_{b \to +\infty} \int_1^b \frac{1}{x^2} \mathrm{d} x \\
+& = \lim_{b \to +\infty} (- \frac{1}{x}  |_1^b) \\
+& =  \lim_{b \to +\infty} (1 - \frac{1}{b} ) \\
+& = 1
+\end{align*}
+
+\subsubsection{反常积分的代数运算}
+\paragraph{}
+若$f(x), g(x)$在区间$[a, \omega)$存在反常积分，那么
+$$
+\int_a^\omega(\alpha  f(x) + \beta g(x)) \mathrm{d} x  =\alpha  \int_a^\omega f(x) \mathrm{d} x + \beta \int_a^\omega g(x) \mathrm{d} x
+$$
+即对加法和标量乘法封闭的.
+
+\subsubsection{反常积分的性质}
+\paragraph{}
+如果函数$f(x)$在$[a, \omega)$上存在反常积分，并且在$[a, \omega]$上可积，那么反常积分就和积分相同.
+
+\paragraph{}
+如果函数$f(x)$在$[a, \omega)$上存在反常积分，那么这个区间中有一个点$c$，即$a \leq c < \omega)$，那么
+$$
+\int_a^\omega f(x) \mathrm{d} x = \int_a^c f(x) \mathrm{d} x + \int_c^\omega f(x) \mathrm{d} x
+$$
+
+\subsubsection{换元积分法}
+\paragraph{}
+同(10.4节)不定积分类似的， 对于函数$f(x)$，其定义域是区间$[a, \omega )$, 设$x = g(t)$, 并且$g(a) = a$, 以及$\lim_{t\to \omega} g(t) = \lambda$，那么
+$$
+\int_a^\omega f(x) \mathrm{d} x = \int_a^\lambda f(g(t)) g'(t) \mathrm{d} t
+$$
+
+\subsubsection{收敛性的判断}
+\paragraph{}
+反常积分收敛的\textbf{柯西判别法}\: 如果函数$f(x)$的定义域$[a, \omega)$，并且在其中的任何子区间内可积，对于任何的$\varepsilon > 0$，存在$a \leq \delta < \omega$，使得对于任何的$\delta < b_1, \delta < b_2$，满足
+$$
+|\int_{b_1}^{b_2} f(x) \mathrm{d} x | < \varepsilon
+$$
+那么积分
+$$
+\int_a^\omega f(x) \mathrm{d} x 
+$$
+收敛，即存在反常积分.
+
+
+\paragraph{}
+如果$\int_a^\omega |f(x)| \mathrm{d} x$收敛，那么$\int_a^\omega f(x) \mathrm{d} x$\textbf{绝对收敛}
+
+\paragraph{}
+如果函数$f(x), g(x)$，在区间$[a, \omega)$上有
+$$
+0 \leq f(x) \leq g(x)
+$$
+那么，如果$\int_a^\omega g(x) \mathrm{d} x$收敛, $\int_a^\omega f(x) \mathrm{d} x$也收敛. 如果$\int_a^\omega f(x) \mathrm{d} x$发散，那么$\int_a^\omega g(x) \mathrm{d} x$也是发散的. 若$\int_a^\omega g(x) \mathrm{d} x$收敛，那么
+$$
+\int_a^\omega f(x) \mathrm{d} x \leq \int_a^\omega g(x) \mathrm{d} x
+$$
+
+\paragraph{}
+\textbf{阿贝尔-狄利克雷准则}\: 设函数$f(x), g(x)$定义域为$[a, \omega)$，那么如果
+\begin{enumerate}
+\item $\int_a^\omega f(x) \mathrm{d} x$ 收敛
+\item $g(x)$是单调函数
+\end{enumerate}
+或者
+\begin{enumerate}
+\item $\int_a^\omega f(x) \mathrm{d} x$ 上有界
+\item $g(x)$是单调趋于零
+\end{enumerate}
+只要满足这两组条件中的一组，那么反常积分
+$$
+\int_a^\omega f(x) g(x) \mathrm{d} x
+$$
+收敛
+
+\subsubsection{级数和积分}
+\paragraph{}
+级数
+$$
+\sum_{n = 1}^\infty f(n) = f(1) + f(2) + \cdots 
+$$
+ 和反常积分
+ $$
+ \int_1^{+\infty} f(x) \mathrm{d} x
+ $$
+ 同时收敛或者同时发散.
+
+
+
+
+
+
+

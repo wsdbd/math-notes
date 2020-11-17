@@ -1,0 +1,80 @@
+\section{线性映射}
+
+\subsection{线性映射}
+\paragraph{}
+有向量空间$V$和$W$， 将一个映射$L: V \to W$，它满足
+\begin{enumerate}
+\item $L(\textbf{v}_1 + \textbf{v}_2) = L(\textbf{v}_1) + L(\textbf{v}_2)$
+\item $L(\alpha \textbf{v}_1) = \alpha L(\textbf{v}_1)$
+\item $L(\alpha \textbf{v}_1 + \beta \textbf{v}_2) = \alpha L(\textbf{v}_1) + \beta L(\textbf{v}_2)$
+\end{enumerate}
+这样的映射，将为\textbf{线性映射}，如果$L: V \to V$, 也就是一种映射把向量空间$V$映射到自身，称为\textbf{线性算子}. 与一般的函数类似，不过这种映射的参数为向量. 
+
+\paragraph{}
+在(3.3.4小节)中，坐标变换就是一种线性映射，因为是映射到同一个空间，所以说也称这为线性算子，其中提到了\textbf{基变换矩阵}.  这里推广出来，同样的可以把线性映射表示成一个矩阵, 只不过基变换矩阵是方阵，这里的矩阵就不受这个限制.  例如
+$$
+A = \begin{bmatrix}
+1 & 0 \\
+0 & 1 \\
+1 & 1 
+\end{bmatrix}
+$$ 
+如果$L(\textbf{x}) = A\textbf{x}$, 如果$\textbf{x}$是空间$R^2$的向量，假设为$(2, 1)^T$那么
+$$
+L(\textbf{x}) = \begin{bmatrix}
+1 & 0 \\
+0 & 1 \\
+1 & 1 
+\end{bmatrix} \cdot \begin{bmatrix}
+2 \\
+1 
+\end{bmatrix} =  \begin{bmatrix}
+2 \\
+1  \\
+3
+\end{bmatrix} 
+$$
+也就是说，这样的一种映射，把$R^2$映射到$R^3$中的一个子空间. 
+
+\subsection{核与象}
+\paragraph{}
+在(3.2节)中曾经提到过\textbf{零子空间}$N(A)$, 如果把映射表示成矩阵的话，那么把这个零子空间称为线性变换$L$的\textbf{核}. 有线性空间$V$, 如果有$S$是$V$的子空间，$S$的\textbf{象}记为$L(S)$, 整个空间$V$的像称为$L$的\textbf{值域} .
+
+\subsection{特征值}
+\paragraph{}
+在向量空间$V$中，考虑一个线性算子$L(\textbf{x})$，用矩阵表示为$A\textbf{x}$, 对于一个标量$\lambda$，如果向量空间$V$中有一个非零的向量\textbf{x}, 使得$L(\textbf{x}) = \lambda \textbf{x}$，即$A(\textbf{x}) = \lambda \textbf{x}$，称$\lambda$为矩阵$A$或称为线性变换$L$的\textbf{特征值}, 这个非零的向量\textbf{x}称之为$\lambda$的\textbf{特征向量}.
+
+\paragraph{}
+在(3.3.4小节)中提到，一个线性算子(向量空间$V$映射到自身的一种映射)是一个$n\times n$的方阵, 为了求得一种线性映射的所有的特征值和特征向量，令$A$是映射矩阵,
+$A \textbf{x} = \lambda \textbf{x}$，那么就意味着
+$$
+(A - \lambda I) \textbf{x} = 0
+$$
+有非零解.  看成一个齐次线性方程组，有非零解那么，形成的矩阵的特征值必为0. 也就是列向量线性无关的话只有零解，它们需要线性相关.  因此矩阵$A$有非零的特征值或者说有特征向量的充分必要的条件是
+$$
+det(A - \lambda I) = 0
+$$
+举个例子来说
+$$
+A = \begin{bmatrix}
+1 & 0 \\
+1 & 1 
+\end{bmatrix}
+$$
+代放上面的方程，
+$$
+det \begin{bmatrix}
+1 - \lambda & 0 \\
+1 & 1 - \lambda
+\end{bmatrix} = 0
+$$
+因此
+$$
+\lambda^2 - 2 \lambda + 1 = 0
+$$
+所以$\lambda = 1$. 只有一个特征值，它的特征向量形如$(0, a)^T$，$a$为任意标量.
+
+
+
+
+

@@ -1,0 +1,44 @@
+\section{概率}
+
+\subsection{样本空间和事件}
+\paragraph{}
+\textbf{定义} 将一个试验的所有的可能的结果组成的集合，称为该试验的\textbf{样本空间}. 样子空间的子集称之为\textbf{事件}. 空子集称为一个\textbf{不可能事件}. 如果两个事件$E$和$F$，并且$E\cap F= \emptyset$，那么称事件$E$和$F$是\textbf{互不相容的}
+
+\paragraph{}
+例如扔一次骰子，那么样本空间就是$S = \{1, 2, 3, 4, 5, 6\}$，那么将扔出3点，或者扔出大于3点，都称之为事件，扔出7则为一个不可能事件，扔出2和扔出3为互不相容的事件.
+
+\subsection{概率}
+
+\paragraph{}
+我们将样本空间$S$中的事件$E$发生的可能性记为$P(E)$
+
+\subsubsection{古典概率}
+\paragraph{}
+\textbf{古典概率}也称为\textbf{拉普拉斯概率}，古典概率的概念是现代概率论的特殊的例子，如果一个试验所有的单位事件数量有限，并且是\textbf{等可能性}的，那么事件$E$在事件空间$S$中概率
+$$
+P(E) =  \frac{|E|}{|S|}
+$$
+
+
+\subsubsection{统计概率}
+\paragraph{}
+\textbf{统计概率}是指，如果一个试验的某个事件，重复无数次，该事件出现频率存在一个极限值，这个值就是事件的概率，也就是
+$$
+P(E) = \lim_{n\to \infty } f_n(E)
+$$
+
+\subsubsection{现代概率论}
+\paragraph{}
+现在概率论指的建立公理化系统的概率论，对于样本空间$S$，事件$E$的概率记为$P(E)$，那么
+\begin{enumerate}
+\item $ 0 \leq P(E) \leq 1$
+\item $P(S) = 1$
+\item 对互不相容的事件$E_1, E_2, \cdots$，那么
+$$
+P\left(\cup_{i=1}^\infty E_i\right) = \sum_{i=1}^\infty P(E_i)
+$$
+\end{enumerate}
+
+
+
+

@@ -1,0 +1,240 @@
+\section{勒贝格积分}
+
+\subsection{测度}
+\subsubsection{环}
+\paragraph{}
+在(1.4.3小节)里提到过域是加法和乘法封闭的(加法和乘法并非传统意义上的加法和乘法)，并且加法和乘法都有逆元. 这里要提到另一种结构，称为\textbf{环}.  环和域的区别在于环的乘法不一定需要有逆元，也就是环对除法不封闭. 
+
+\paragraph{}
+\textbf{环}是定义了加法和乘法的集合，但是对除法不一定封闭
+\begin{enumerate}
+\item 有加法的单位元，用$0$表示
+\item 有乘法的单位元，用$1$表示
+\item 有加法逆元，即$x$的逆元记为$-x$
+\item 加法满足交换率, $x + y = y + x$.
+\item 加法满足结合率, $x + (y + z) = (x + y) + z$
+\item 乘法满足交换率, $x \cdot y = y \cdot x$
+\item 乘法满足结合率, $x \cdot (y \cdot z) = (x \cdot y) \cdot z$
+\item 加法和乘法满足分配率，即$x \cdot (y + z) = x\cdot y + x \cdot z$
+\end{enumerate}
+如果乘法不满足交换率的话，那么称为\textbf{非交换环}. 满足交换率的称为\textbf{交换环}.
+
+\paragraph{}
+\textbf{半环}的话就是把环的定义里去除加法逆元，也就是减法不封闭. 
+
+\paragraph{}
+直观的讲，自然数是半环，整数是环，有理数和实数是域. 并且的话，我们仍然要重复说明一下，这里的加法和乘法并非传统意义上的加法和乘法, 其意义是指两种操作或者两种映射，说成加法和减法是为了直观的理解. 
+
+\subsubsection{集合族}
+\paragraph{}
+把集合的子集合组成的集合称为\textbf{集合族}. 例如说集合$S = \{1, 2, 3\}$，那么集合$\{\{1\}\}, \{\{1\}, \{2\}\}, \{\{1\}, \{2\}, \{3\}\}, \{\{1, 2\}\}, \{\{1, 2, 3\}\}, \cdots$，这些集合都可以称为\textbf{集合族}.
+
+\subsubsection{sigma-代数}
+\paragraph{}
+先介绍一下\textbf{$\sigma$-环}，并和差在(1.1.3小节)里有介绍，假设和集合$X$，它的一个集合系$\mathcal{A}$满足下面的运算
+\begin{enumerate}
+\item 如果$A_n \in \mathcal{A}, (n \in N)$，那么$\cup_{n = 1}^\infty A_n \in \mathcal{A}$
+\item 如果$A_n \in \mathcal{A}, (n \in N)$，那么$\cap_{n = 1}^\infty A_n \in \mathcal{A}$
+\item 如果$A, B \in \mathcal{A}$，那么$A - B \in \mathcal{A}$.
+\end{enumerate}
+这个集合系称为一个$\sigma$-环.  这里的环和$\sigma$-环的区别在于，环没有特别的要求可数集的并也在$\mathcal{A}$内，在(1.5节)里曾提到可数集(即和自然数集等势的集合).  也就是说，如果一个环虽然是无限集，但是集合系里每个元素（就是集合）是有限集. 那么这样的环不是$\sigma$-环.
+
+\paragraph{}
+\textbf{$\sigma$-代数}又称为\textbf{$\sigma$-域}, 是指集合$X$的集合系$\mathcal{F}$中包括其全集$X$的$\sigma$-环. 定义的话就是
+\begin{enumerate}
+\item 如果$A_n \in \mathcal{A}, (n \in N)$，那么$\cup_{n = 1}^\infty A_n \in \mathcal{A}$
+\item 如果$A_n \in \mathcal{A}, (n \in N)$，那么$\cap_{n = 1}^\infty A_n \in \mathcal{A}$
+\item 如果$A \in \mathcal{A}$，那么$\overline{A} \in \mathcal{A}$, 或者$A^c \in \mathcal{A}$.
+\end{enumerate}
+
+\subsubsection{测度}
+\paragraph{}
+设集合$X$中的$\sigma$-代数$\mathcal{A}$，如果一个函数$\mu$满足下面的条件
+\begin{enumerate}
+\item $\mu(\emptyset) = 0$
+\item $0 \leq \mu \leq \infty$
+\item $\mu(\cup_{i=1}^\infty A_i) = \sum_{i=1}^\infty \mu(A_i)$, 其中$A_i \in \mathcal{A}$并且$A_1, A_2, \cdots$两两不相交.
+\end{enumerate}
+称$\mu$这个函数为\textbf{测度}. 测度是长度，面积，体积，概率等概念的一个抽象.
+
+\paragraph{}
+把集合$X$以及$X$上的$\sigma$-代数组成的集合系$\mathcal{A}$，以及一个测度$\mu$，表示一个\textbf{测度空间}. 用记号$(X, \mathcal{A}, \mu)$来表示. $\mathcal{A}$中的元素为测度空间中的\textbf{可测集合}.
+
+\subsubsection{测度的性质}
+\begin{enumerate}
+\item 如果$A_1 \subseteq A_2$，那么$\mu(A_1) \leq \mu(A_2)$
+\item 对任意的$A_i \in \mathcal{A}$，$\mu(\cup_{i=1}^\infty A_i) \leq \sum_{i=1}^\infty \mu(A_i)$
+\item 如果对任意的$A_n \subseteq A_{n+1}, n \in N$, 那么$\mu(\cup_{i=1}^\infty A_i) = \lim_{i\to \infty} \mu(A_i)$
+\item 如果对任意的$A_n \subseteq A_{n+1}, n \in N$, 并且其中至少有一个集合的测度有限，那么$\mu(\cap_{i=1}^\infty A_i) = \lim_{i\to \infty} \mu(A_i)$
+\end{enumerate}
+
+\paragraph{}
+关于测度，满足这些性质的函数都可以称为测度，比如说计数测度，就是集合的元素的个数，很明显的可以满足测度的定义. 接p;[[下来主要要讨论的一种测度是勒贝格测度. 
+
+\subsection{勒贝格测度}
+
+\subsubsection{集函数}
+\paragraph{}
+把运用的对象是集合的函数称为\textbf{集函数}，如果其函数值会对应一个实数的话. 这里用$\phi(X)$来表示. 
+
+\paragraph{}
+有了之前环的定义之后，可以在环上定义这样的集函数，在$R^n$空间的子集的一个特殊的集函数，其性质是
+\begin{enumerate}
+\item $\phi(\emptyset) = 0$
+\item $0 \leq \phi(A) \leq \infty$
+\item $\phi(A \cup B) = \phi(A) + \phi(B)$, 其中$A \cap B = \emptyset$, 可加
+\item 如果$A \subset B$，那么$\phi(A) \leq \phi(B)$
+\end{enumerate}
+
+\paragraph{}
+因此，如果$A \subset B$，并且$\phi(A) \neq \infty$，那么
+\begin{align*}
+\phi( (B - A) \cup A) &= \phi(B) \\
+\phi(B - A) + \phi(A) &=  \phi(B) \\
+\phi(B - A) &= \phi(B) - \phi(A)
+\end{align*}
+
+
+\paragraph{}
+因为环并未规定可数可加，而$\sigma$-环上可数可加，因此集函数如果是在$\sigma$-环上，除了拥有环上的集函数的性质外，特别得多了一条\textbf{可数可加}的性质
+$$
+\phi(\cup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \phi(A_n)
+$$
+其中$A_1, A_2, \cdots, A_n$之间两两不相交. 
+
+\subsubsection{外测度}
+\paragraph{}
+再定义一个集函数$\mu(X)$，不仅满足$\phi(X)$的的定义外，并且，如果集合族$\mathcal{A}$是一个$\sigma$-环，对任意的集合$A$，存在集合$F, G$，满足$F \subset A \subset G$，其中$F$为闭集，$G$为开集，那么对于任何的$\varepsilon > 0$
+$$
+\mu(G) - \varepsilon \leq \mu(A) \leq \mu(F) + \varepsilon
+$$
+
+\paragraph{}
+定义在$\sigma$-环上的一个函数$\mu^*$，如果$E\subset \cup_{n=1}^\infty A_n$
+$$
+\mu^*(E) = \inf \sum_{n=1}^\infty \mu(A_n)
+$$
+这个函数$\mu^*$称为集合$E$对应于$\mu$的外测度.
+
+\paragraph{}
+因此，可以知道$\mu^*(A) = \mu(A)$，并且，可以知道，当$E = \cup_{n=1}^\infty E_n$时
+$$
+\mu^*(E) \leq \sum_{n=1}^\infty \mu^* (E_n)
+$$
+称这个性质为\textbf{可数次加性}.
+
+
+
+\subsubsection{勒贝格测度}
+\paragraph{}
+$R^n$中的区间，指的是所有向量$\textbf{x} = (x_1, x_2, \cdots, x_n)^T$满足
+$$
+a_i \leq x_i \leq b_i
+$$
+这些向量或者称之为点组成的集合称为\textbf{区间}, 用$I$表示
+
+\paragraph{}
+现在可以开始勒贝格测度的正式定义，假设$R^n$空间中的区间$I$，存在一个集函数$m(X)$，使得
+$$
+m(I) = \prod_{i=1}^n (b_i - a_i)
+$$
+如果$E = I_1 \cup \cdots \cup I_n$，并且$I_1, I_2, \cdots, I_n$两两不相交，那么
+$$
+m(E) = m(I_1) + \cdots + m(I_n)
+$$
+这样的集函数$m(X)$称为$R^n$空间中的\textbf{勒贝格测度}. 
+
+\paragraph{}
+特别的，如果$m(X)$和它的外测度$m^*(X)$满足
+$$
+m(X) = m^*(X)
+$$
+那么称集合$X$为可测的. 如果它们不相同，就是不可测的.  可以证明对于集合$X$的$\sigma$-环$\mathcal{X}$中都是勒贝格可测的，并且集合$X$本身也是可测的. 它们组成的$\sigma$-代数，称为\textbf{勒贝格可测空间}, 其中$\mathcal{A}$的元素(某个集合)，称为\textbf{勒贝格可测集合}.
+
+\paragraph{}
+勒贝格测度可以很好的定义$R^n$空间中的长度，面积，体积. 以下对于$R^n$空间中的勒贝格测度为了方便简称为测度.
+
+\subsubsection{勒贝格测度的性质}
+\paragraph{}
+\textbf{1}. 单个元素的集合的测度为$0$，例如$m(\{1\}) = 1 - 1 = 0$，由(12.2.3小节)的定义. 或者$m(\{(1, 1, 2)^T\}) = (1 - 1) (1 - 1) (2 - 2) = 0$. 因此单点的测度为$0$.
+
+\paragraph{}
+\textbf{2}. 假设$E$是可数集，那么$m(E) = 0$，将$E$看成单点元素的并，$E = \{x_1\} \cup \{x_2\} \cup \cdots \cup \{x_n\}$，那么$m(E) = \sum_{n=1}^\infty 0 = 0$. 实际上这个时候$m^*(E) \leq \sum_{n=1}^\infty m^*(\{x_n\}) = 0$，所以$m^*(E) = m(E)$.
+
+\paragraph{}
+\textbf{3}. 根据勒贝格测度的性质，那么对于任何的开集或者闭集，必然是可测的.
+
+\subsection{可测函数}
+\paragraph{}
+如果函数$f: E \to R^n$，对于任何的开集$V \subset R^n$，对于$f^{-1}(V) \subset E$，如果$E$是可测的，那么称这个函数为\textbf{可测函数}.
+
+\paragraph{}
+因为连续函数的值域的某个开子集的逆也是一个开区间, 所以很显然\textbf{连续函数必然是可测函数}. 
+
+\paragraph{}
+如果函数$f(x), g(x)$都是可测函数，那么$f(x) + g(x), f(x) \cdot  g(x), \max(f(x), g(x)), \min(f(x), g(x))$都是可测函数. 如果$g(x) \neq 0$，那么$\frac{f}{g}$也是可测函数. 
+
+\paragraph{}
+如果函数$f(x)$可测，那么$|f(x)|$也可测.
+
+\paragraph{}
+如果函数$f(x)$可测，$g(x)$连续，那么$g \circ f$也是可测函数. 
+
+\subsection{勒贝格积分}
+
+\subsubsection{指示函数}
+\paragraph{}
+将
+$$
+1_E(x) =
+  \begin{cases}
+    1   & \quad x \in E \\
+    0  & \quad x \notin E
+  \end{cases}
+$$
+函数$1_E(x)$称为\textbf{指示函数}，或者称为\textbf{特征函数}.
+
+\subsubsection{简单函数}
+\paragraph{}
+设$E$是可测集，如果$f(E)$是有限集，那么称函数$f$为\textbf{简单函数}. 因此指示函数也是一个简单函数.  简单函数可以用指示函数构造出来.
+
+\paragraph{}
+对于实函数$f(x)$又可以用简单函数逼近，也就是用指示函数逼近.  考虑这样的一个数列$\{s_n\}$
+\begin{align*}
+s_1 &= -1 \cdot (f(x) \leq -1)  -\frac{1}{2} (-1 <  f(x) \leq  -\frac{1}{2}) + \frac{1}{2} (\frac{1}{2} \leq f(x) < 1) + 1 \cdot (f(x) \geq 1) \\
+s_2 &= -2 \cdot (f(x) \leq -2) -\frac{7}{4} (-2 < f(x) \leq -\frac{7}{4}) - \frac{6}{4} (-\frac{7}{4} < f(x) \leq -\frac{6}{4}) \\
+& - \frac{5}{4}( -\frac{6}{4} < f(x) \leq -\frac{5}{4}) - \frac{4}{4} (-\frac{5}{4} < f(x) \leq -\frac{4}{4}) - \frac{3}{4} ( -\frac{4}{4} < f(x) \leq -\frac{3}{4}) \\
+& - \frac{2}{4} (-\frac{3}{4} < f(x) \leq -\frac{2}{4}) - \frac{1}{4}(-\frac{2}{4} < f(x) \leq -\frac{1}{4})  \\
+& +\frac{1}{4} (\frac{1}{4} \leq f(x) < \frac{2}{4}) + \frac{2}{4} (\frac{2}{4} \leq f(x) < \frac{3}{4}) + \frac{3}{4} (\frac{3}{4} \leq f(x) < \frac{4}{4}) \\
+& + \frac{4}{4} (\frac{4}{4} \leq f(x) < \frac{5}{4}) + \frac{5}{4} (\frac{5}{4} \leq f(x) < \frac{6}{4}) + \frac{6}{4} (\frac{6}{4} \leq f(x) < \frac{7}{4}) \\
+& + \frac{7}{4} (\frac{7}{4} \leq f(x) < \frac{8}{4}) + 2\cdot (f(x) \geq 2) \\
+s_3 & = \cdots \\
+& \vdots \\
+s_n & = \cdots 
+\end{align*}
+直观的理解就是用指示函数来不断的分割函数$f(x)$的值域，以达到逼近的目的. 这也正是勒贝格积分的思想，通过分割值域以达到求积分的目的，而黎曼积分是通过分割定义域来实现的.
+
+\subsubsection{勒贝格积分}
+\paragraph{}
+设
+$$
+s(x) = \sum_{i=1}^n c_i 1_{E_i}(x), \quad (c_i > 0)
+$$
+可测, 并且令
+$$
+I_E(s) = \sum_{i=1}^n c_i m(E\cap E_i)
+$$
+如果函数$f(x)$可测，并且$0 \leq s \leq f$，那么将
+$$
+\int_E f \mathrm{d} m := \sup I_E(s)
+$$
+称之为函数$f$关于测度$m$的\textbf{勒贝格积分}. 
+
+\paragraph{}
+例如对于简单函数
+\begin{align*}
+\int_E s\, \mathrm{d} m & = I_E(s)
+\end{align*}
+
+
+

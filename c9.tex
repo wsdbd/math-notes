@@ -1,0 +1,482 @@
+\section{导数与微分}
+
+\subsection{导数}
+
+\subsubsection{导数}
+\paragraph{}
+导数从几何意义上可以看成是函数在某一个点的斜率. 对于函数$y = f(x)$，在某一点$x_0$处，如果
+$$
+\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0}  \frac{f(\Delta x + x_0)  - f(x_0)}{\Delta x}
+$$
+这样的极限存在，称之为$f(x)$在$x_0$处的\textbf{导数}. 函数在$x_0$处的导数也可以记为$f'(x_0), \frac{\mathrm{d}f}{\mathrm{d}x}(x_0)$.  也就是
+$$
+f'(x_0) =  \lim_{x\to x_0}  \frac{f(x)  - f(x_0)}{x - x_0}
+$$
+
+\paragraph{}
+另外，如果导数存在，又可以等价为
+$$
+\frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) + \alpha(x)
+$$
+其中$\lim_{x \to x_0} \alpha(x) = 0$
+
+\paragraph{}
+类似于左极限和右极限，定义\textbf{左导数}
+$$
+f'(x_{0^-}) =  \lim_{\Delta x \to 0^-}  \frac{f(\Delta x + x_0)  - f(x_0)}{\Delta x}
+$$
+以及右导数
+$$
+f'(x_{0^+}) =  \lim_{\Delta x \to 0^+}  \frac{f(\Delta x + x_0)  - f(x_0)}{\Delta x}
+$$
+和左右极限一样，如果左导数和右导数存在并且相同，那么函数在点$x_0$处可导. 
+
+\subsubsection{导数和连续性}
+\paragraph{}
+如果函数$f(x)$在点$x_0$处存在导数，那么
+$$
+f(x)  = (x - x_0) f'(x_0) + \alpha(x) (x - x_0) + f(x_0)
+$$
+因此
+\begin{align*}
+\lim_{x\to x_0} f(x) & = \lim_{x\to x_0} \big( (x - x_0) f'(x_0) + \alpha(x) (x - x_0) + f(x_0) \big) \\
+& = \lim_{x\to x_0} (x - x_0) f'(x_0) + \lim_{x\to x_0}  \alpha(x) (x - x_0) + \lim_{x\to x_0} f(x_0) \\
+& = 0 + 0 + f(x_0) \\
+& = f(x_0)
+\end{align*}
+所以说，如果函数在某一点可导，那么可以肯定$f(x)$在这一点连续. 换句话说，连续是可导的必要条件，但是连续不一定可导.
+
+\subsubsection{代数运算}
+\begin{enumerate}
+\item $(\alpha f + \beta g)'(x) = \alpha f'(x) + \beta g'(x)$, 加法
+\item $(fg)'(x) = f'(x)g(x) + f(x)g'(x)$, 乘法
+\item $(\frac{f}{g})'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$
+\end{enumerate}
+
+\subsubsection{反函数的导数}
+\paragraph{}
+如果一个函数在定义域内有反函数，那么反函数的导数为
+$$
+x_y' = \frac{1}{y_x'}
+$$
+例如，$f(x) = \arcsin{x}$，是$\sin{x}$的反函数，因为$x = \sin{y}$
+$$
+f'(x) = \frac{1}{\cos{y}} = \frac{1}{(\sqrt{1 - \sin^2{y}} } = \frac{1}{\sqrt{1 - x^2}}
+$$
+
+\subsubsection{常见函数的导数}
+\begin{enumerate}
+\item $y = c, y' = 0$
+\item $y = x, y' = 1$
+\item $y = x^n, y' = nx^{n-1}$
+\item $y = x^{\frac{1}{2}}, y' = \frac{1}{2\sqrt{x}}$
+\item $y = a^x, y' = a^x \ln{a}$
+\item $y = e^x, y' = e^x$
+\item $y = \log_a{x}, y' = \frac{log_a{e}}{x}$
+\item $y = \ln{x}, y' = \frac{1}{x}$
+\item $y = \sin{x}, y' = \cos{x}$
+\item $y = \cos{x}, y' = -\sin{x}$
+\item $y = \tan{x}, y' = \frac{\sin{x}}{\cos{x}} = \frac{\cos^2{x} + \sin^2{x}}{\cos^2{x}} = \frac{1}{\cos^2{x}} $
+\item $y = \cot{x}, y' = -\frac{1}{\sin^2{x}}$
+\item $y = \arcsin{x}, y' = \frac{1}{\sqrt{1 - x^2}}$
+\item $y = \arccos{x}, y' = -\frac{1}{\sqrt{1 - x^2}}$
+\item $y = \arctan{x}, y' = \frac{1}{1 + x^2}$
+\item $y = \mathrm{arccot} x, y' = -\frac{1}{1 + x^2}$
+\end{enumerate}
+
+\subsubsection{常见函数导数的证明}
+\paragraph{}
+\textbf{1}. $f(x) = x^n$
+
+\paragraph{}
+证明\: $f'(x) = \lim_{\Delta x \to 0} \frac{(x + \Delta x)^n - x^n}{\Delta x}$，因此
+\begin{align*}
+f'(x) & = \lim_{\Delta x \to 0}  \frac{\sum_{k = 0}^n C_n^k x^k \Delta x^{n-k} - x^n}{\Delta x} \\
+& =  \lim_{\Delta x \to 0}  \frac{\Delta x^n + C_n^1 \Delta x^{n-1} x + \cdots + C_n^n x^n - x^n }{\Delta x} \\
+& = \lim_{\Delta x \to 0}  \frac{\Delta x^n + C_n^1 \Delta x^{n-1} x + \cdots + C_n^{n-1} x^{n-1} \Delta x }{\Delta x} \\
+&= \lim_{\Delta x \to 0} ( \Delta x^{n-1} + C_n^1 \Delta x^{n-2} x + \cdots + C_n^{n-1} x^{n-1}) \\
+&= C_n^{n-1} x^{n-1} \\
+&= n x^{n-1}
+\end{align*}
+
+\paragraph{}
+\textbf{2}. $f(x) = e^x$
+
+\paragraph{}
+证明\: $f'(x) = \lim_{\Delta x \to 0} \frac{e^{(x + \Delta x)} - e^x}{\Delta x}$，因此
+$$
+ \frac{e^{(x + \Delta x)} - e^x}{\Delta x} = e^x \frac{e^{\Delta x} - 1}{\Delta x}
+$$
+令$t = e^{\Delta x} - 1$并且当$\Delta x \to 0$时，$t$也趋近于$0$，那么
+$$
+ \frac{e^{(x + \Delta x)} - e^x}{\Delta x} = e^x \frac{t}{\ln{(t + 1)}}
+$$
+现在考查另一个极限$\lim_{t \to 0} \frac{t}{\ln{(t+1)}}$
+因为
+\begin{align*}
+\lim_{t \to 0} \frac{t}{\ln{(t+1)}} & = \lim_{t \to 0} \frac{1}{\frac{\ln{(t+1)}}{t}} \\
+& = \lim_{t \to 0} \frac{1}{\ln{(t + 1)^{\frac{1}{t}}}} \\
+& = \frac{1}{ \lim_{t \to 0} \ln{(t + 1)^{\frac{1}{t}}} } \\
+& = \frac{1}{\ln{e}} \\
+& = 1
+\end{align*}
+因此
+\begin{align*}
+\lim_{\Delta x \to 0}  \frac{e^{(x + \Delta x)} - e^x}{\Delta x} & = \lim_{\Delta x \to 0, t \to 0} e^x \frac{t}{\ln{(t + 1)}} \\
+& = e^x
+\end{align*}
+
+
+\paragraph{}
+\textbf{3}. $f(x) = \ln{x}$
+
+\paragraph{}
+证明\: $f'(x) = \lim_{\Delta x \to 0} \frac{\ln{(x + \Delta x)} - \ln{x}  }{\Delta x}$，因此
+\begin{align*}
+\frac{\ln{(x + \Delta x)} - \ln{x}  }{\Delta x} &= \frac{\ln{(1 + \frac{\Delta x}{x}}}{\Delta x} \\
+& = \frac{1}{x} \frac{\ln_{(1 + \frac{\Delta x}{x} )}}{\frac{\Delta x}{x}} 
+\end{align*}
+上一个例子，证明过
+$$
+\lim_{t \to 0} \frac{t}{\ln{(t+1)}} = 1
+$$
+也就是
+$$
+\lim_{t \to 0} \frac{\ln{(t+1)}}{t} = 1
+$$
+因此
+\begin{align*}
+\lim_{\Delta x \to 0} \frac{\ln{(x + \Delta x)} - \ln{x}  }{\Delta x}  & = \lim_{\Delta x \to 0}  \frac{1}{x} \frac{\ln{(1 + \frac{\Delta x}{x} )}}{\frac{\Delta x}{x}}  \\
+& = \frac{1}{x} \lim_{\Delta x \to 0}  \frac{\ln{(1 + \frac{\Delta x}{x} )}}{\frac{\Delta x}{x}} \\
+&= \frac{1}{x} \cdot 1 \\
+&= \frac{1}{x}
+\end{align*}
+
+
+\paragraph{}
+\textbf{4}. $f(x) = \sin{x}$
+
+\paragraph{}
+证明\: $f'(x) = \lim_{\Delta x \to 0} \frac{\sin{(x + \Delta x)} - \sin{x}  }{\Delta x}$，这里需要用到(8.1.5小节)里的极限$\lim_{x \to 0} \frac{\sin{x}}{x} = 1$, 因此
+\begin{align*}
+ \lim_{\Delta x \to 0} \frac{\sin{(x + \Delta x)} - \sin{x}  }{\Delta x} & =  \lim_{\Delta x \to 0}  \frac{(\sin{x} \cos{\Delta x} + \sin{\Delta x} \cos{x}) - \sin{x} }{\Delta x} \\
+ & =   \lim_{\Delta x \to 0} ( \frac{\sin{x} (\cos{\Delta x} - 1)}{\Delta x} + \cos{x}  \frac{\sin{\Delta x}}{\Delta x} ) \\
+ & =  \lim_{\Delta x \to 0} ( \frac{\sin{x} (\cos{\Delta x} - 1)}{\Delta x} + \cos{x} \\
+ & = \sin{x}  \lim_{\Delta x \to 0} \frac{ \cos^2{\frac{\Delta x}{2}} -  \sin^2{\frac{\Delta x}{2}} - 1}{\Delta x} + \cos{x} \\
+ & =   \sin{x}  \lim_{\Delta x \to 0} (\frac{\Delta x}{2} \cdot  \frac{ - \sin^2{\frac{\Delta x}{2}}}{(\frac{\Delta x}{2})^2} ) + \cos{x} \\
+ & = \cos{x} 
+\end{align*}
+
+\paragraph{}
+\textbf{5}. $f(x) = \arctan{x}$
+
+\paragraph{}
+证明\:  令$x = \tan{y}$
+\begin{align*}
+f'(x) & = \arctan{x} \mathrm{d} x  \\
+& = \frac{1}{\tan'{y}} \\
+& = \cos^2{y} \\
+& = \frac{1}{\tan^2{y} + 1} \\
+& = \frac{1}{x^2 + 1}
+\end{align*}
+
+
+
+\subsubsection{复合函数的导数}
+\paragraph{}
+复合函数$f(g(x))$或者记为$f \circ g$的导数为
+$$
+(f \circ g)' = f'(g(x)) g'(x)
+$$
+用另一个符号表示可能更直观一些
+$$
+\frac{\mathrm{d} y}{\mathrm{d} x} = \frac{\mathrm{d} y}{\mathrm{d} u} \cdot  \frac{\mathrm{d} u}{\mathrm{d} x}
+$$
+这个称为导数的\textbf{链式法则}.
+
+
+\subsubsection{高阶导数}
+\paragraph{}
+前面提到了，乘法的导数的代数运算，针对更高阶的乘法的导数，其公式为, 称为\textbf{莱布尼茨公式}
+$$
+(fg)^{(n)}(x) = \sum_{k = 0}^n C_n^k f^{(n -k)}(x) g^{(k)}(x)
+$$
+.
+
+
+\subsection{微分}
+
+\subsubsection{微分}
+\paragraph{}
+对于函数$y = f(x)$，如果
+$$
+\Delta y = a \cdot \Delta x + o(\Delta x)
+$$
+也就是在某一个点$x$, 如果存在一个常数$a$，使得函数值$y$的变化量和$x$的变化量呈线性关系. 称函数在这一点\textbf{可微}, 称$a \Delta x$为函数的微分.
+
+\paragraph{}
+微分和导数存在着密切的关系，可微和可导几乎是等价的，把函数的微分记为$\mathrm{d} y$或者$\mathrm{d} f$，函数在一个点可导，那么就在这一点可微，并且微分
+$$
+\mathrm{d} f(x) = f'(x) \mathrm{d} x
+$$
+因此，导数的性质和代数运算同样可以用在微分上. 这里不做详细的说明.
+
+
+\subsubsection{中值定理}
+\paragraph{}
+如果函数$f(x)$的在开区间$(a, b)$中可导，那么存在一个点$p$使得
+$$
+\frac{f(b) - f(a)}{b - a} = f'(p)
+$$
+这个就是微分\textbf{中值定理}，这个公式称为\textbf{有限增量公式}. 这个也称为\textbf{拉格朗日中值定理}.
+
+\subsubsection{基本定理}
+\paragraph{}
+\textbf{a}. \textbf{费马定理}
+
+\paragraph{}
+对于定义域为$E$的函数$f(x)$，如果在点$x_0$处，存在一个$\varepsilon > 0$，使得对于$|x - x_0| < \varepsilon$的所有的点(即$x_0$的邻域)，使得$f(x) \leq f(x_0)$，称$x_0$为\textbf{局部极大值点}，同样的如果$f(x) \geq f(x_0)$称之为\textbf{局部极小值点}，它们都称之为\textbf{局部极值点}.  如果$f(x) < f(x_0)$称为\textbf{严格局部极大值点}, 反之为\textbf{严格局部极小值点}. 
+
+\paragraph{}
+如果点$x_0$，不是$E$的上界或者下界，或者说$x_0$是一个内点，并且$x_0$是局部极值点，称$x_0$为\textbf{内极值点}.
+
+\paragraph{}
+\textbf{费马定理}, 如果函数$f(x)$在内点或者称$x_0$是$f(x)$的内值点，如果在$x_0$可导(可微)，那么$f'(x_0) = 0$.
+
+\paragraph{}
+\textbf{b}. \textbf{罗尔定理}
+
+\paragraph{}
+如果函数$f(x)$在闭区间$[a, b]$内连续，并且至少在开区间$(a, b)$内可导，并且$f(a) = f(b)$，那么存在一个点$a < p < b$使得，$f'(p) = 0$.
+
+\paragraph{}
+\textbf{c}. \textbf{中值定理}在前面一节已经提到了，中值定理是罗尔定理的一个推广
+
+\paragraph{}
+简单的介绍一下如何用罗尔定理推出中值定理，在闭区间$[a, b]$的函数$f(x)$在开区间$(a, b)$内可导, 考虑一个函数$g(x) = f(x)  - \frac{f(b) - f(a)}{b-a} (x - a)$，显然$g(a) = f(a)$, $g(b) = f(a)$, 因此$g(a) = g(b)$，根据罗尔定理，存在一个$p$使得
+$$
+g'(p) = 0
+$$
+因此
+$$
+g'(p) = f'(p) - \frac{f(b) - f(a)}{b-a} = 0
+$$
+也就是中值定理
+
+\paragraph{}
+用中值定理可以推导出判断函数单调性的方法，如果在开区间$(a, b)$内，函数$f(x)$的层数都是正的，那么，函数$f(x)$在这个开区间内是单调递增的.
+
+\paragraph{}
+\textbf{d}. \textbf{广义中值定理}，又称为\textbf{柯西中值定理}
+
+\paragraph{}
+如果函数$f(x)$和$g(x)$在闭区间$[a, b]$中连续，并且在开区间$(a, b)$内可导，并且在开区间$(a, b)$内，$g(x) \neq 0$，则在$(a, b)$中存在一个点$p$, $a < p < b$，使得
+$$
+\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(p)}{g'(p)}
+$$
+称这个定理为\textbf{广义中值定理}，因为中值定理是这个定理的一个特例，即$g(x) = x$的情况下就是中值定理了.
+
+\paragraph{}
+证明广义中值定理，可以用罗尔定理来证明，考虑函数$h(x) = f(x) ( g(b) - g(a)) - g(x) (f(b) - f(a))$, 因此$h(a) = f(a) g(b) - f(a) g(a) - g(a) f(b) + g(a)f(a) = g(a)f(a) - f(a) g(a)$, $h(b) = f(b) g(b) - f(b) g(a) - g(b)f(b) + f(a)g(b) = f(a)g(b) - f(b)g(a)$，因此$h(a) = h(b)$，所以根据罗尔定理存在一个点$p$使得$h'(p) = 0$，所以
+$$
+h'(p) = f'(x) (g(b)- g(a)) - g'(x) (f(b) - f(a)) = 0
+$$
+这就证明了柯西中值定理了.
+
+
+\subsection{泰勒公式和泰勒级数}
+\paragraph{}
+把形如
+$$
+p(x) = p(x_0) + \frac{p'(x_0)}{1!} (x - x_0) + \frac{p''(x_0)}{2!} (x - x_0)^2 + \cdots + 
+\frac{p^{(n)}(x_0)}{n!} (x - x_0)^n
+$$
+的公式称为\textbf{泰勒公式}.
+
+\paragraph{}
+设有函数$f(x)$有$n+1$阶导数，令函数
+$$
+g(x) = f(x_0) + f'(x_0) (x - x_0) + \frac{f''(x_0)}{2} (x - x_0)^2 + \cdots + \frac{f^{(n)(x_0)}}{(n)!} (x - x_0)^{n}
+$$
+因此
+$$
+g'(x_0) = f'(x_0), g''(x_0) = f''(x_0), \cdots, g^{(n)} = f^{(n)}(x_0)
+$$
+设有一个数$t$，令
+$$
+h(x) = f(x) - g(x) - t (x - x_0)^{(n+1)}
+$$
+那么
+$$
+h^{(n + 1)}(x) = f^{(n + 1)}(x) - t (n+1)!
+$$
+因为$h(x_0) = h'(x_0) = h''(x_0) = \cdots = h^{(n+1)}(x_0) = 0$, 所以在$x_0$点
+$$
+t  =  \frac{f^{(n + 1)}(x_0)}{(n + 1)!} 
+$$
+考虑非$x_0$点$x_1> x_0$(相反的情况下类似，这里为了方便这样假设)，求出一个$t$，并且希望让$h(x) = 0$. 这样我们就能把$f(x)$和$g(x)$关联起来.  那么因为$h(x_1) = h(x_0) = 0$，因此说根据罗尔定理，那么$(x_0, x_1)$之间存在一个点$x_2$，使得$h'(x_2) = 0$，又因为$h'(x_0) = 0$，因此在$(x_0, x_2)$之间存在一个点$x_3$使得$h''(x_3) = 0$，因此说存在一个点$x_{n+2}$，使得$h^{(n+1)} (x_{n + 2}) = 0$，所以
+$$
+h^{(n+1)}(x_{n+2}) = f^{(n+1)}(x_{n + 2}) - t (n + 1)! = 0
+$$
+此时
+$$
+t = \frac{f^{(n + 1)}(x_{n+2})}{(n+1)!}  
+$$
+因此说，对于任意的一个$x$，存在一个数$t$，这个数$t$由$x$和$x_0$中间的某个点$p$决定并且$t =  \frac{f^{(n + 1)}(p)}{(n+1)!} $ ，那么这个时候
+$$
+f(x) = g(x) + t ( x - x_0)^{n + 1} = g(x) +  \frac{f^{(n + 1)}(p)}{(n+1)!}  ( x - x_0)^{n + 1}
+$$
+再展开$g(x)$，于是
+$$
+f(x) = f(x_0) + f'(x_0) (x - x_0) + \frac{f''(x_0)}{2} (x - x_0)^2 + \cdots + \frac{f^{(n)(x_0)}}{(n)!} (x - x_0)^{n} +  \frac{f^{(n + 1)}(p)}{(n+1)!}  ( x - x_0)^{n + 1}
+$$
+这个函数的近似公式称为\textbf{带有拉格朗日余项的泰勒公式}. 其中$x > p > x_0$或者$x < p < x_0$.  用
+$$
+R_n(x) =  \frac{f^{(n + 1)}(p)}{(n+1)!}  ( x - x_0)^{n + 1}
+$$
+来表示$f(x)$和$g(x)$的差值，一般称之为误差. 
+
+\paragraph{}
+特别的，如果$x \to x_0$，那么$\lim_{x\to x_0} R_n(x) = 0$，并且说$\lim_{x\to x_0} \frac{R_n(x)}{(x - x_0)^n} = 0$，于是对于$x \to x_0$，$R_n(x) = o((x -x_0)^n)$.
+
+\paragraph{}
+举例来说函数$f(x) = e^x$，在$x = 0$处展开
+$$
+e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^n}{n!} + \frac{e^p}{(n+1)!} x^{n+1}
+$$
+其中的
+$$
+R_n(x) = \frac{e^p}{(n+1)!} x^n+1
+$$
+并且(7.1.5小节)有证明
+$$
+\lim_{n\to \infty}  \frac{x^n+1}{(n+1)!}  e^p = 0
+$$
+于是，如果展开无穷之项之后
+$$
+e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^n}{n!} + \cdots
+$$
+形如
+$$
+\sum _{n=0}^{\infty }{\frac {f^{(n)}(a)}{n!}}(x-a)^{n}
+$$
+的级数就称为\textbf{泰勒级数}(也就是泰勒公式的无穷多项). 因此$e^x$可以展开成泰勒级数.
+
+
+\subsection{常见函数的泰勒公式展开}
+\begin{enumerate}
+\item $e^x = 1 + x + \frac{x^2}{2!} + \cdots  = \sum_{n=0}^\infty  \frac{x^n}{n!}$
+\item $\sin{x} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n + 1)!}$
+\item $\cos{x} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}$
+\item $\frac{1}{1 -x} = 1 + x + x^2 + x^3 + \cdots = \sum_{n=0}^\infty x^n$，当$|x| < 1$时
+\item $\frac{1}{1 + x} = 1 - x + x^2 - x^3 + \cdots = \sum_{n=0}^\infty (-1)^n x^n$，当$|x| < 1$时
+\end{enumerate}
+
+\subsection{洛必达法则}
+\paragraph{}
+对于一些特别形式的函数极限，使用洛必达法则可以简化一些计算，例如$\frac{0}{0}, \frac{\infty}{\infty}$这类形式的函数极限
+$$
+\lim_{x\to a} \frac{f(x)}{g(x)} = \lim_{x\to a} \frac{f'(x)}{g'(x)}
+$$
+这个就是\textbf{洛必达法则}，洛必达法则是广义中值定理的一个应用，亦可以扩展成
+$$
+\lim_{x\to a} \frac{f(x)}{g(x)} = \lim_{x\to a} \frac{f'(x)}{g'(x)} = \cdots =  \lim_{x\to a} \frac{f^{(n)}(x)}{g^{(n)}(x)}
+$$
+
+\paragraph{}
+例如$\lim_{x\to 0} \frac{\sin{x}}{x} = \lim_{x \to 0} \frac{\cos{x}}{1} = 1$
+
+\subsection{凸函数}
+
+\subsubsection{凸函数}
+\paragraph{}
+对于函数$f(x)$的定义域$E$内，任意的两点$x_0, x_1$，对于$t \in [0, 1]$，如果
+$$
+f(t x_0 + (1- t) x_1) \leq t f(x_0) + (1 - t) f(x_1)
+$$
+称函数是\textbf{凸函数}. 如果$f(t x_0 + (1- t) x_1) < t f(x_0) + (1 - t) f(x_1)$那么函数$f(x)$称为\textbf{严格凸函数}. 同样的相反的可以称函数为\textbf{凹函数}，凹函数又称为\textbf{上凸函数}, 以及\textbf{严格凹函数}. 凸函数也称为\textbf{下凸函数}.
+
+\paragraph{}
+如果函数$f(x)$在导函数$f'(x)$是单调递增的，那么$f(x)$就是凸函数，如果$f'(x)$是严格单调递增的，那么$f(x)$也就是严格凸函数.
+
+\paragraph{}
+如果函数$f(x)$存在二阶导数，那么如果$f''(x) \geq 0$，则$f(x)$是凸函数，如果$f''(x) > 0$则$f(x)$是严格凸函数.
+
+\subsubsection{拐点}
+\paragraph{}
+对于函数$f(x)$，如果在$x_0$点的领域内，即存在$\varepsilon > 0$, 使得当$x_0 - x < \varepsilon$时，函数在$(x_0 - \varepsilon, x_0)$这个区间内下凸，在$(x_0, x_0 + \varepsilon)$这个区间下上凸(凹), 称这个点$x_0$为\textbf{拐点}, 反之在左区间上凸(凹), 右区间下凸, 也称之为\textbf{拐点}.
+
+\subsubsection{詹生不等式}
+\paragraph{}
+如果$f(x)$是凸函数，$x_1, x_2, \cdots, x_n$是开区间$(a, b)$内的点，$\alpha_1, \alpha_2, \cdots, \alpha_n > 0 $, 并且$\alpha_1 + \alpha_2 + \cdots + \alpha_n = 1$，那么
+$$
+f(\alpha_1 x_1 + \alpha_2 x_2 + \cdots + \alpha_n x_n) \leq \alpha_1 f(x_1) + \alpha_2 f(x_2) + \cdots + \alpha_n f(x_n)
+$$
+
+\subsection{插值}
+\subsubsection{拉格朗日插值}
+\paragraph{}
+这里简要的介绍一下插值这种方法，可以用于已经知几个点的情况下，函数的其它点的近似值，在(5.6节)曾提到最小二乘的方法来拟合一条直线以使这条直线离所有数据点最近，而插值法也是类似的，只不过拟合的一条曲线要经过所有的点. 今后我们将提到更多的插值公式，这里只简要的介绍一下拉格朗日插值.
+
+\paragraph{}
+假设有$n+1$个数据点$(x_0, y_0), (x_1, y_1), \cdots, (x_n, y_n)$(对这些点排序，使得$x_n > x_{n-1} > \cdots > x_1 > x_0$). 定义一个多项式
+$$
+l_i(x) = \frac{(x - x_0) (x - x_1) \cdots (x - x_{i-1}) (x - x_{i+1}) \cdots (x-x_n)}{(x_i - x_0) (x_i - x_1) \cdots (x_i - x_{i-1}) (x_i - x_{i+1}) \cdots (x_i -x_n)}
+$$
+因此
+$$
+l_0(x_0) =  \frac{(x_0 - x_1) (x_0 - x_2)  \cdots (x_0-x_n)}{(x_0 - x_1) (x_0 - x_2)\cdots  (x_0 -x_n)} = 1
+$$
+以及
+$$
+l_0(x_1) =  \frac{(x_1 - x_1) (x_1 - x_2)  \cdots (x_1-x_n)}{(x_0 - x_1) (x_0 - x_2)\cdots  (x_0 -x_n)} = 0
+$$
+由此，再定义一个多项式
+$$
+L(x) = \sum_{i = 0}^n y_i l_i(x)
+$$
+这个多项式称为\textbf{拉格朗日插值多项式}，可以将函数
+$$
+f(x) \approx L(x)
+$$
+并且
+$$
+f(x_0) = L(x_0), f(x_1) = L(x_1), \cdots, f(x_n) = L(x_n)
+$$
+考虑它们的误差的话，准确的公式就是
+$$
+f(x) = L(x) + \frac{f^{(n+1)(p)}}{(n+1)!} (x - x_0)(x - x_1)\cdots (x - x_n)
+$$
+这个公式，称为\textbf{带余项的拉格朗日插值公式}
+
+\paragraph{}
+同泰勒公式的证明类似，定义一个函数
+$$
+g(x) = f(x) - L(x) - t (x - x_0)(x - x_1)\cdots (x - x_n)
+$$
+试图找到一个$t$，使得对任意点$x$，使得$g(x) = 0$,  因为
+$$
+g(x_0) = 0, g(x_1) = 0, \cdots, g(x_n) = 0
+$$
+因此存在一点$p$使得$g^{(n+1)} = f^{n+1}(p) - t (n+1)! = 0$， 所以说$t = \frac{f^{(n+1)}(p)}{(n+1)!}$ ，这个$p$可以是$x_0$和$x_n$区间中的点.
+
+\paragraph{}
+例如$f(x) = \sin{x}$，当然现实的情况很可能是我们仅有数据点，而不知道实际的函数长什么样子，这里为了对比误差，使用$\sin{x}$作为参考，因此取几个数据点$(0, 0), (\frac{\pi}{4}, \frac{\sqrt{2}}{2}), (\frac{\pi}{2}, 1)$因此
+\begin{align*}
+L(x) & = \frac{\sqrt{2}}{2} \frac{x (x - \frac{\pi}{2})}{\frac{\pi}{4}  (\frac{\pi}{4} - \frac{\pi}{2})} + \frac{x (x - \frac{\pi}{4})}{\frac{\pi}{2} (\frac{\pi}{2} - \frac{\pi}{4})} \\
+	   & = \frac{(8 - 8\sqrt{2}) x^2 + (4\sqrt{2} \pi -2 \pi) x}{\pi^2} 
+\end{align*}
+其误差
+$$
+R(x) = - \frac{\cos{p}}{3!} (x - 0) (x - \frac{\pi}{4}) (x - \frac{\pi}{2})
+$$
+因此如果$x = \frac{3 \pi}{8}$的时候
+\begin{align*}
+L( \frac{3 \pi}{8}) &  \approx  0.905 \\
+\sin{( \frac{3 \pi}{8})} &  \approx 0.92 
+\end{align*}
+误差为
+$$
+R( \frac{3 \pi}{8} ) \approx  0.03\cdot \cos{p}
+$$
+并且我们知道$|\cos{p}| \leq 1$的，所以说，这里的误差不会超过$0.03$.

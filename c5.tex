@@ -1,0 +1,184 @@
+\section{内积空间}
+
+\subsection{赋范向量空间}
+\subsubsection{范数}
+\paragraph{}
+范数对应的是长度的概念, 是对长度的一种推广，对于向量空间$V$中的向量$\textbf{v}$和$\textbf{w}$，定义一个\textbf{范数}，用记号$\parallel \cdot \parallel$表示，它满足
+\begin{enumerate}
+\item $\parallel \textbf{v} \parallel = 0$, 当且仅当$\textbf{v} = \textbf{0}$
+\item $\parallel \textbf{v} \parallel \geq 0$
+\item $\parallel  \alpha \textbf{v} \parallel = |\alpha| \parallel \textbf{v} \parallel$
+\item $\parallel \textbf{v} + \textbf{w} \parallel \leq \parallel \textbf{v} \parallel + \parallel \textbf{w} \parallel$, 三角不等式
+\end{enumerate}
+另外，如果$\textbf{v} \neq \textbf{0}$时，$\parallel \textbf{v} \parallel = 0$，那么这个时候称之为\textbf{半范数}. 
+
+\paragraph{}
+定义了范数的向量空间，称之为\textbf{赋范向量空间}.
+
+\subsection{内积空间}
+\paragraph{}
+对于向量空间$V$，其中的两个元素$\textbf{v}_1, \textbf{v}_2$, 增加一种运算将两个向量映射成一个实数，这种运算，称之为\textbf{内积}, 记为$\langle \textbf{v}_1, \textbf{v}_2 \rangle$, 它有如下的性质
+\begin{enumerate}
+\item $\langle \textbf{x}, \textbf{y} \rangle \geq 0$, 仅当$\textbf{x}$时, 内积为0
+\item $ \langle \textbf{x}, \textbf{y} \rangle = \langle \textbf{y}, \textbf{x} \rangle$
+\item $\langle \alpha \textbf{x} + \beta \textbf{y}, \textbf{z} \rangle = \alpha \langle \textbf{x}, \textbf{z} \rangle + \beta \langle \textbf{y}, \textbf{z} \rangle $
+\end{enumerate}
+带有内积运算的向量空间，称之为\textbf{内积空间}. 例如，欧氏空间$R^n$中，将内积定义为
+$$
+\langle \textbf{x}, \textbf{y} \rangle = \textbf{x}^T \textbf{y}
+$$
+
+\subsubsection{内积空间中的范数}
+\paragraph{}
+对于内积空间$V$中的向量$\textbf{v}$，定义一个$\textbf{v}$的\textbf{范数}
+$$
+\parallel \textbf{v} \parallel = \sqrt{\langle \textbf{v} , \textbf{v} \rangle}
+$$
+因此说，内积空间可以看成是一个赋范向量空间. 再定义内积空间中两个向量$\textbf{v}_1, \textbf{v}_2$的\textbf{距离}(在分析学中称为度量)为
+$$
+\parallel \textbf{v}_1 - \textbf{v}_2 \parallel 
+$$
+将
+$$
+\textbf{u} = \frac{\textbf{v}}{\parallel \textbf{v} \parallel}
+$$
+称之为\textbf{单位向量}.
+
+
+\subsubsection{投影}
+定义一个向量空间$V$中两个向量$\textbf{v}, \textbf{w}$， $\textbf{w} \neq \textbf{0}$, 那么从$\textbf{v}$到$\textbf{w}$的\textbf{正交投影}为一个标量
+$$
+\alpha = \frac{\langle \textbf{v}, \textbf{w} \rangle  }{\parallel \textbf{w} \parallel }
+$$
+\textbf{向量投影}为
+\begin{align*}
+\textbf{u} & =  \frac{\langle \textbf{v}, \textbf{w} \rangle  }{\parallel \textbf{w} \parallel } (\frac{\textbf{w}}{\parallel \textbf{w} \parallel}) \\
+                 & = \frac{\langle \textbf{v}, \textbf{w}\rangle}{\langle \textbf{w}, \textbf{w} \rangle} \textbf{w}
+\end{align*}
+由此，可以知道两个向量之间的夹角$\theta$, 
+$$
+\cos{\theta} =   \frac{\langle \textbf{v}, \textbf{w} \rangle  }{\parallel \textbf{w} \parallel \parallel \textbf{v} \parallel}
+$$
+
+\subsection{正交}
+\paragraph{}
+如果内积空间$V$中，两个向量$\textbf{v}, \textbf{w}$的内积为0，称它们\textbf{正交}, 对应了垂直的概念, 即$\langle \textbf{v}, \textbf{w} \rangle = 0$, 在上一节有提到向量之间的夹角$\theta$满足
+$$
+\cos{\theta} =  \frac{\langle \textbf{v}, \textbf{w} \rangle  }{\parallel \textbf{w} \parallel \parallel \textbf{v} \parallel}
+$$
+注意这里假设$\textbf{v}, \textbf{w}$都是非零向量，所以$\parallel \textbf{v} \parallel > 0, \parallel \textbf{w} \parallel > 0 $,  那么如果它们夹角为$90^\circ$，则$\langle \textbf{v}, \textbf{w} \rangle = 0$.
+
+\paragraph{}
+如果有集合向量空间$V$中，有$S = \{\textbf{v}_1, \textbf{v}_2, \cdots, \textbf{v}_n\}, S \subset V$, 并且其中任意两个不同的向量$\langle \textbf{v}_i, \textbf{v}_j \rangle = 0$, 称集合$S$为一个\textbf{正交集}. 特别的，如果集合$S$中的各个元素为单位向量，单位向量是指
+$$
+\textbf{u} = \frac{\textbf{v}}{\parallel \textbf{v} \parallel}
+$$
+那么这样的集合称为\textbf{规范正交集}. 如果$V = Span(\{\textbf{u}_1, \textbf{u}_2, \cdots, \textbf{u}_n\})$，其中的$\textbf{u}_i$为单位向量，称这样的一组集合为\textbf{规范正交基}.
+
+\subsection{正交子空间}
+\paragraph{}
+对于内积空间$U$中，两上子空间$V, W$，如果对于任何的$\textbf{u} \in V, \textbf{w} \in W$，都有$\langle \textbf{u}, \textbf{w} \rangle = 0$，称$V$正交于$W$，记为$V\bot W$.  对于若对于所有与空间$V$正交的向量组成的集合记为$V^\bot$，称为$V$的\textbf{正交补}.
+
+\subsection{零空间与列空间}
+在(3.2节)中提到过\textbf{零空间}, 把由几个向量线性生成的空间, 将这几个向量组成一个矩阵的话，如果$A\textbf{x} = 0$的非零解组成的集合，它满足空间的定义(对加法和标量乘法封闭)，称之为\textbf{零空间}, 记为$N(A)$.  把这几个向量线性生成的空间称为$A$的列空间, 记为$R(A)$. 行空间表示为$R(A^T)$. 由正交的定义，如果$A\textbf{x} = 0$，那么其实就是$N(A) \bot R(A^T)$，就是行零空间和行空间正交的.  因此可以说
+$$
+N(A^T)\bot R(A), N(A)\bot R(A^T)
+$$
+同时
+$$
+N(A) = R(A^T)^\bot, N(A^T) = R(A)^\bot
+$$
+这里不做证明.
+
+\subsection{最小二乘问题}
+\paragraph{}
+最小二乘问题在机器学习中有重要的应用，它可以用来拟合统计数据，最简单的一种就是拟合一条直线，使用得统计数据的各个点与拟合的直接的误差最小. 假设一条直线
+$$
+y = a + bx
+$$
+我们希望这种直线可以使得己知的数据点的误差最小，那么$a, b$相当于未知数, 假设有数据点$(p_1, p_1'), (p_2, p_2'), \cdots, (p_n, p_n')$.  则
+\begin{align*}
+p_1' & = a + b p_1 \\
+p_2' & = a + b p_2 \\
+        & \vdots \\
+p_n' & = a + b p_n 
+\end{align*}
+如果将$\textbf{x} = (a, b)^T$，即将$a, b$看成未知量，为了方便理解用向量$\textbf{x}$表示，则这个方程可以表示为
+$$
+\begin{bmatrix}
+1 & p_1 \\
+1 & p_2 \\
+   & \vdots \\
+1 & p_n 
+\end{bmatrix} \cdot \textbf{x} = (p_1', p_2', \cdots, p_n')^T
+$$
+这是一个$2xn$的矩阵，一般而言$n > 2$时这个线性方程组无解. 将这个方程组简化表示成$A\textbf{x} = \textbf{b}$，也就是要求这个方程组的解，如果不存在解的话，那么退而求使得$\parallel \textbf{b} - A\textbf{x} \parallel$最小的解. 为了方便令$r(\textbf{x}) = \textbf{b} - A\textbf{x}$. 则我们知道$r(\textbf{x}) \bot R(A)$(因为从向量的角度, $\textbf{b} - \textbf{a}$是两个向量组成的三角形的第三边，要使第三边最小，那就是第三边和$\textbf{a}$垂直)，也就是$r(\textbf{x}) \in N(A^T)$, 因此$A^T r(\textbf{x}) = A^T (\textbf{b} - A\textbf{x}) = 0$
+那么
+$$
+A^T A \textbf{x} =  A^T\textbf{b}
+$$
+的解就是我们退而求最小误差的解.
+
+\paragraph{}
+例个特殊的例子有数据点$(1,1), (2,2)$，要拟合一条直线，使得结果的误差最小，那么看成一个方程组
+$$
+\begin{bmatrix}
+1 & 1 \\
+1 & 2
+\end{bmatrix} \textbf{x} = (1, 2)^T
+$$
+因此，换成求解
+$$
+\begin{bmatrix}
+1 & 1 \\
+1 & 2
+\end{bmatrix}^T \begin{bmatrix}
+1 & 1 \\
+1 & 2
+\end{bmatrix} \textbf{x} = \begin{bmatrix}
+1 & 1 \\
+1 & 2
+\end{bmatrix}^T (1, 2)^T
+$$
+也就是求方程组
+$$
+\begin{bmatrix}
+2 & 3 \\
+3 & 5
+\end{bmatrix} \textbf{x} = (3, 5)^T
+$$
+求得解为$(0, 1)^T$，就就是直线$y = 0 + x$即$y = x$，这条直线也正好穿过这两个点.
+
+\paragraph{}
+再举一个复杂的例子，如果有3个数据点$(1, 1), (1, 2), (2, 1)$，那么
+$$
+A = \begin{bmatrix}
+1 & 1 \\
+1 & 1 \\
+1 & 2 
+\end{bmatrix}, \textbf{b} =  \begin{bmatrix}
+1 \\
+2 \\
+1 
+\end{bmatrix},
+$$
+转换成求
+$$
+ \begin{bmatrix}
+3& 4 \\
+4 & 6
+\end{bmatrix} \textbf{x} = (4, 5)^T
+$$
+的解，其解为$(2, -1/2)$. 因此直线为$y = 2 - \frac{1}{2} x$
+
+\paragraph{}
+特别要注意的是，这里只举了拟合一条直线的方法，也可以用最小二乘来拟合曲线，这个将在后边提到. 
+
+
+
+
+
+
+
+
+

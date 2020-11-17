@@ -1,0 +1,44 @@
+\section{条件概率}
+
+\subsection{条件概率}
+
+\paragraph{}
+对于样本空间为$S$中的两个事件$E, F$，我们将事件$F$发生的情况下事件$E$发生的概率称为\textbf{条件概率}, 记为$P(E|F)$, 如果$P(F) > 0$，那么
+$$
+P(E|F) = P(EF)/P(F)
+$$
+
+\paragraph{}
+条件概率常用的乘法公式
+$$
+P(E_1E_2E_3\cdots E_n) = P(E_1)P(E_2|E_1)P(E_3|E_1 E_2)\cdots P(E_n|E_1\cdots E_{n-1})
+$$
+
+\paragraph{}
+另一个常用的公式
+$$
+P(E) = P(EF) + P(EF^c) = P(E|F)P(F) + P(E|F^c)P(F^c) = P(E|F)P(F) + P(E|F^c)(1-P(F^c))
+$$
+
+\subsection{全概率公式}
+\paragraph{}
+如果样本空间$S$中某一个划分$F_1, F_2, \cdots, F_n$，并且$E$为$S$中的事件，那么
+$$
+P(E) = \sum_{i=1}^n P(EF_i) = \sum_{i=1}^n P(E|F_i) P(F_i) 
+$$
+
+
+\subsection{贝叶斯公式}
+\paragraph{}
+如果样本空间$S$中某一个划分$F_1, F_2, \cdots, F_n$，并且$E$为$S$中的事件，那么
+$$
+P(F_j|E) = \frac{P(EF_j)}{P(E)} = \frac{P(E|F_j)P(F_j)}{\sum_{i=1}^n P(E|F_i)P(F_i)}
+$$
+
+\subsection{独立事件}
+\paragraph{}
+如果样本空间$S$中两个事件$E, F$，若
+$$
+P(EF) = P(E)P(F)
+$$
+那么将$E, F$是\textbf{互相独立}的事件，否则称为\textbf{互相不独立}

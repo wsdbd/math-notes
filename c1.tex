@@ -1,0 +1,265 @@
+\section{集合}
+
+\paragraph{}
+集合是数学的一个基础概念. 大部分数学分支都可以用集合论的语言来方便的描述. 集合通俗的讲就是一些具有类似性质的事物组成的整体. 
+
+\subsection{符号以及集合的初等运算}
+
+\subsubsection{符号}
+\paragraph{}
+一般将集合记为$\{...\}$, 如果集全只有一个元素$a$，可以将集合$\{a\}$简单的记为$a$.
+\paragraph{}
+集合$\{1, 2\}$是无序的，它和$\{2, 1\}$是同一个集合，有时需要用到有序的数对，因此为了方便引入了$(x, y)$来表示有序对，假设两个集合$A$和$B$，则先后从$A$和$B$选取一个元素，产生了一组有序的元素，这些元素组成的集合$M$，例如$a \in A$并且$b \in B$，以及$(a, b) \in M$, 有序对用集合可定义为:
+$$
+(a, b) := \{\{a\},\{a, b\}\}
+$$
+通常用符号$:=$来表示定义.
+
+\subsubsection{包含}
+\paragraph{}
+假设$x$为集合$X$的一个元素，用符号记为:
+$$
+x \in X
+$$, 相反的，如果$y$不是集合$X$的元素，记为$y \notin X$.
+假设两个集合$X$和$Y$, 它们的元素相同, 记为:
+$$
+X = Y
+$$
+假设集合$A$是集合$B$的\textbf{子集}，即集合$A$中的元素都是集合$B$中的元素, 记为
+$$
+A \subset B
+$$
+如果$A \subset B$并且$A \neq B$, 则称$A$为$B$的\textbf{真子集}. 另外， 一般将\textbf{空集}记为$\emptyset$
+
+\subsubsection{集合的初等运算}
+\paragraph{}
+\textbf{并} \:  将集合$A$和$B$的所有元素组成的集合$M$称为$A$和$B$的并集, 记为:
+$$
+A \cup B := \{x\in M | (x \in A) \lor (x \in B)\}
+$$
+
+\paragraph{}
+\textbf{交} \:  假设有集合$A$和$B$, 如果元素$x$同时是$A$和$B$的元素, 而这些元素组成的集合$M$称为$A$和$B$的交集, 记为:
+$$
+A \cap B := \{ x \in M | (x \in A) \land (x \in B) \}
+$$
+
+\paragraph{}
+\textbf{差} \:  假设有集合$A$和$B$, 如果元素$a$是$A$的元素, 并且$a$不是$B$的元素，这些元素组成的集合$M$称为$A$和$B$的差, 记为:
+$$
+A - B := \{ x \in M | (x \in A) \land (x \ni B) \}
+$$
+有时候差也用$A\setminus B$表示
+$$
+A \setminus B := \{ x \in M | (x \in A) \land (x \ni B) \}
+$$
+
+\paragraph{}
+\textbf{对称差}\: 假设有集合$A$和$B$, 如果元素$c$只属于$A$或者只属于$B$，定义这样元素组成的集合为$A$和$B$的对称差记为
+$$
+A\Delta B = (A - B) \cup (B - A)
+$$
+
+
+\paragraph{}
+\textbf{补} \:  假设有集合$X$, $A$为它的子集，则$A$在集合$X$中的补集, 表示所有的$x$是$X$中的元素，但不是$A$的元素, 记为$A^c$
+
+
+\paragraph{}
+\textbf{直积(笛卡尔积)} \:  假设两个集合$X$和$Y$, 分别从$X$和$Y$中取一个元素, 组成一个有序对, 称之为集合的直积. 记为:
+$$
+X \times Y := \{(x, y) | (x \in X) \land (y \in Y) \}
+$$
+例如，$R$可以表示为数轴上的点，也就是一条直线，面$R \times R$简记为$R^2$，就可以表示一个平面，而$R \times R \times R$简记为$R^3$，就可以表示为一个三维的空间了.
+
+
+\subsection{公理化集合论}
+
+\paragraph{}
+1870年代由康托尔(Georg Cantor)和理察·戴德金(Richard Dedekind)提出的朴素集合论, 而朴素集合论定义并不严格，例如罗素悖论: 由所有不包含集合自身的集合所构成的集合，因此数学家们开始研究更严格的理论.  目前广泛认同的一个公理化的集合论是策梅洛-弗兰克尔集合论(Zermelo-Fraenkel), 并且加上选择公理，这一套公理称为ZFC. 
+
+\begin{enumerate}
+\item \textbf{外延公理}  \: 两个集合相同, 当且仅当它们的元素相同
+\item \textbf{分类公理}  \: 给出任何的集合$S$以及命题$P(x)$, 存在一个\textbf{子集}包含使命题$P(x)$成立的元素. 即子集存在.
+\item \textbf{配对公理} \:  对于集合$X, Y$, 存在一个集合$Z = \{X, Y\}$, 即存在一个集合, 它的元素是集合$X$和$Y$.
+\item \textbf{并集公理} \: 对于一个集合的集合$S$, 存在一个并集, 使它的元素是$S$的元素的元素.
+\item \textbf{空集公理} \: 存在一个不包含任何元素的集合, 称为\textbf{空集}, 记为$\{\}$.
+\item \textbf{无穷公理} \: 存在着集合$S$, 空集$\{\}$为其中的一个元素，且对于任何元素$x$, $x \cup \{x\}$也是其元素.
+\item \textbf{替代公理} \: 假设$F(x, y)$是一个命题，它使得集体$X$中的任何的元素$x_0$, 存在一个元素$y_0$, 使得$F(x, y)$成立, 而这些$y$所组成的集合存在.
+\item \textbf{幂集公理} \: 假设集合$X$, 则存在着一个集合, 它的元素为$X$的一切子集.
+\item \textbf{正规公理} \: 非空集合$X$中存在一个元素$x$, 它与$X$本身的交集为空集. 
+\paragraph{}
+\item \textbf{选择公理} \: 对于任意多个非空集组成的族, 存在一个集合$C$, 其元素为族中每个集合$X$的一个元素, 即$C \cap X = \{x\}$. 
+\end{enumerate}
+
+\subsection{映射}
+\paragraph{}
+对于集合$X$和$Y$，将某种对应关系$f$使每一个$x \in X$都有一个$y \in Y$与之对应. 这种对应关系称之为\textbf{映射}, \textbf{映射}也称之为\textbf{函数}. 其中$X$将为函数的\textbf{定义域}, $Y$称为函数的\textbf{到达域}. 而
+$$
+f(X) := \{ y \in Y | (x \in X) \land (y = f(x)) \}
+$$
+称为函数的\textbf{值域}, 注意到，$Y$是到达域，而且$f(X) \subset Y$. 
+另外，也常用这些符号来表示:
+$$
+f: X \to Y, X \stackrel{f}{\to} Y
+$$
+
+\subsubsection{映射的分类}
+\paragraph{}
+\textbf{单射} \: 指的是将不同的变量映射到不同的值，也就是说，如果$x_1 \neq x_2$则$f(x_1) \neq f(x_2)$
+
+\paragraph{}
+\textbf{满射} \: 指的是值域就是到达域，这意味着，是否满射和选取的到达域其实是有关系的.
+
+\paragraph{}
+\textbf{双射} \:  即是单射又是满射的映射称为\textbf{双射}, 也称之为\textbf{一一映射}.
+
+\subsubsection{反函数}
+\paragraph{}
+既然有$f: X \to Y$，那么应该也存在一个集合$Y$到集合$X$的对应. 根据函数的定义，每一个$x$只有一个$y$与之对应，所以反函数不一定存在，考虑仅单射而非满射的情况下，那么必然存在一些元素$y \in Y$，无法映射到$X$之中，而考虑仅满射而非单射的情况下，那么必然存在一些元素$y \in Y$，存在多个$x \in X$, 不满足函数的定义，所以有反函数的充分必要条件是双射.  将函数$f$的反函数记为$f^{-1}$，也称函数$f$\textbf{可逆}.
+
+\subsubsection{函数的复合}
+\paragraph{}
+定义一种函数的复合运算，若有$f: X \to Y$，$g: Y \to Z$，将函数的复合记为:
+$$
+f \circ g := f(g(x))
+$$
+
+\subsection{实数与复数}
+
+\subsubsection{有序集}
+\paragraph{}
+定义一种关系，它的符号是$<$, 如果一个集合$S$的元素$x, y$，它至少在下面的其中一个关系式中成立，
+$$ 
+x < y, \, x = y, \,  y < x
+$$
+并且，如果$x < y, y < z$其中，$x,y,z \in S$，则$x < z$
+
+\paragraph{}
+如果一个集合，定义了一个序的关系，如果是部分元素满足这种关系，称之为\textbf{偏序集}. 如果所有的元素都满足这种关系的，称之为\textbf{全序集}. 例如复数就是一个偏序集，实数就是全序集. 以下为了方便通常把全序集称为有序集.
+
+\paragraph{}
+如果$S$是一个有序集，$E \subset S$，如果存在$b \in S$使得任意的$x \in E$，满足$x <= b$，则称$E$有\textbf{上界}，$b$为$E$的一个上界，若对于任何的$c \in S$并且$c < b$，$c$不是$E$的上界，则我们称$b$为$E$的上确界，也称之为最小上界. 同样的可以定义\textbf{下界}，\textbf{下确界}. 上确界和下确界用符号表示为
+\begin{align*}
+b &= supE  \\
+a &= infE  
+\end{align*}
+
+
+
+\subsubsection{归纳集}
+\paragraph{}
+ 如果有一个集合$S$，如果$a \in S$，并且$a + 1 \in S$，则称这样的集合为\textbf{归纳集}.  这里将包括$0$的最小归纳集，称为\textbf{自然数}，使用符号$N$表示(为了方便，我们将0也视为自然数).  如果我们将$\emptyset$记为0，而$\emptyset \cup \{\emptyset\} = \{\emptyset\}$记为1，2就可以表示成$ 2 := \{0, 1\} = \{\emptyset, \{\emptyset\}\}, \cdots, n + 1 := \{0, 1, \dotsc, n\}$
+
+
+\subsubsection{域}
+\paragraph{}
+将定义了\textbf{加法}和\textbf{乘法}的集合将之为\textbf{域}. 
+
+\paragraph{}
+\textbf{加法} \: 用符号$+$表示，对于集合$S$, 有$x, y, z \in S$它满足以下的条件
+\begin{enumerate}[itemindent=2em]
+\item 有0元，称0为单位元
+\item $x + y \in S$
+\item  $x + y = y + x$，即满足交换率.
+\item $x + (y + z) = (x + y) + z$, 满足结合率.
+\item $x$有\textbf{逆元}记为$-x$，且$x + (-x) = 0$.
+\end{enumerate}
+
+\paragraph{}
+\textbf{乘法} \: 用符号$\cdot$表示，对于集合$S$, 有$x, y, z \in S$它满足以下的条件
+\begin{enumerate}[itemindent=2em]
+\item 有单位元1
+\item $x \cdot y \in S$
+\item  $x \cdot y = y \cdot x$，即满足交换率.
+\item $x \cdot (y \cdot z) = (x \cdot y) \cdot z$, 满足结合率.
+\item 对$x \in S$，且$x \neq 0$，有\textbf{逆元}记为$x^{-1}$，且$x \cdot x^{-1} = 1$.
+\end{enumerate}
+需要说明的是，这里的加法和乘法并非传统意义上的加法和乘法, 其意义是指两种操作或者两种映射，说成加法和减法是为了直观的理解. 
+
+\paragraph{}
+同时，对于加法和乘法，又满足分配率，即
+$$
+x \cdot (y + z) = x \cdot y + x \cdot z
+$$
+
+\subsubsection{整数}
+\paragraph{}
+\textbf{整数}是包含自然数以及它们的负元的集合，用符号$Z$表示. 
+
+\paragraph{}
+\textbf{算术基本定理}\: 对于任何$n > 1$的整数，都可以表示成素数的积
+$$
+n = p_1 \cdots p_i
+$$
+
+\subsubsection{实数域}
+\paragraph{}
+先介绍一下实数集的一个子集\textbf{有理数}. 整数的商$a/b, b \neq 0$称之为\textbf{有理数}，用符号$Q$表示. \textbf{实数域}是这样的一个\textbf{域}不仅有加法和乘法，并且实数集是一个\textbf{全序集}，另外这个实数集满足\textbf{完备性}即\textbf{最小上界公理}，这样的实数集记为$R$.
+
+\paragraph{}
+\textbf{最小上界公理}\:  令$A \subset R$，并且$A \neq \emptyset$，如果$A$有上界，则$A$有最小上界.
+
+\paragraph{}
+有了最小上界公理，就可以把有理数$Q$扩充为实数$R$，令$S \subset Q$，且$S = \{x| x < \sqrt{2}\}$, 由有理数的定义可以知道$\sqrt{2}$不是有理数，所以集合$S$在有理数内有上界， 但是没有上确界. 也就是说有理数中间是有缝隙, 因此在有理数的基础上扩充把不是有理数的实数称为\textbf{无理数}，这就形成了实数集. 
+
+\paragraph{}
+顺便，根据有理数的定义，证明为什么$\sqrt{2}$不是有理数，显然$\sqrt{2}$不是整数，令$\sqrt{2} = p/q$，其中$p,q$互素，等式变成$2q^2 = p^2$，也就是说$p$必然是偶数，令$p = 2m$，则$q^2 = 2m^2$，那个$q$也必然是偶数，这与$p, q$互素矛盾，故$\sqrt{2}$不是有理数. 虽然这个证明很简单，不过这里中间忽略了幂的操作的合法性以及为什么没有上确界，这里就不加证明了. 
+
+\subsubsection{复数域}
+\paragraph{}
+\textbf{复数集}表示有序对$(x, y)$组成的集合，\textbf{复数域}定义了以下的加法和乘法
+\begin{align*}
+(x_1, y_1) + (x_2, y_2) &= (x_1 + x_2, y_1 + y_2) \\
+(x_1, y_1) \cdot (x_2, y_2) &= (x_1 \cdot x_2 - y_1 \cdot y_2, x_1 \cdot y_2 + x_2 \cdot y_1) 
+\end{align*}
+其中的0元用$(0, 0)$表示，1元用$(1, 0)$表示，用符号$i := (0, 1)$，根据乘法, $i^2 = (-1, 0)$，一般将形如$(a, 0)$的复数等同于实数$a$，因此$i^2 = -1$.
+\paragraph{}
+\textbf{定义}\, 复数的共轭，设$z = (a, b)$，则它的共轭$\overline{z} = (a, -b)$，和实数一样，定义一个复数的绝对值，$|z| = \sqrt{z\cdot \overline{z}}$. 因此，如果$z = (a, b)$，那么$|z| = \sqrt{a^2 + b^2}$.
+\paragraph{}
+\textbf{定义}\, 对于复指数$e^z$，$z = x + iy$，则复指数为一个复数$e^z = e^x(\cos{y} + i\sin{y})$.
+
+\paragraph{}
+\textbf{定义}\, 设$z = (x, y) = x + iy$，是一个非零复数，则
+$$
+Log(z) = \log{|z|} + iarg(z)
+$$
+
+
+\paragraph{}
+\textbf{定义}\, 设$z = (x, y) = x + iy$，是一个非零复数，存在
+$$
+x = |z|\cos{\theta}, y = |z|\sin{\theta}, -\pi < \theta <= \pi
+$$
+的实数$\theta$称之为$z$的\textbf{辐角主值}, 记为$\theta = arg(z)$，通常也使用$z = r \exp{i\theta}$, 其中$r = |z|, \theta = arg(z) + 2\pi n$，$n$为任意整数.
+\paragraph{}
+\textbf{定义}\, 设$z$为复数，则
+\begin{align*}
+\cos{z} = \frac{e^{iz} + e^{-iz}}{2} \\
+\sin{z} = \frac{e^{iz} - e^{-iz}}{2i} 
+\end{align*}
+
+\subsection{可数集}
+\paragraph{}
+称集合里元素的个数称为集合的\textbf{基数}或者\textbf{势}, 记为$card(S)$. 如果一个集合和自然数集合等势，那么称这个集合为\textbf{可数集}. 即$card(S) = card(N)$，如果集合是有限的，那么可以称为\textbf{至多可数集}. 如果不是有限的可数集称为\textbf{无限可数集}. 通常为了方便如果$card(S) \leq card(N)$都称为是\textbf{可数集}. 通过可数集可以知道无限和无限之间也是有区别的.
+
+\subsection{欧氏空间}
+
+一个$n$元的有序组$(x_1, x_2, \cdots, x_n)$的集, 以及定义了加法和标量乘法，称这样的集合为一个$n$维的空间. 为了方便，用向量$\textbf{x}$来表示, 因此也可以称之为\textbf{向量空间}. $n$维空间的加法是这样定义的
+$$
+\textbf{x} + \textbf{y} = (x_1 + y_1, \cdots, x_n + y_n
+$$
+其标量乘法
+$$
+a\textbf{x} = (ax_1, \cdots, ax_n)
+$$
+它们的\textbf{内积}，表示为
+$$
+\textbf{x} \cdot \textbf{y} = \sum_{i = 1}^n x_i y_i
+$$
+将$x$的\textbf{范数}定义为
+$$
+|\textbf{x}| = \sqrt{\textbf{x} \cdot \textbf{x}}
+$$
+
+

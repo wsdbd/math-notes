@@ -1,0 +1,155 @@
+\section{原函数(不定积分)}
+
+\subsection{原函数}
+\paragraph{}
+如果一个函数$F(x)$，它的导函数为$f(x)$, 即$F'(x) = f(x)$，那么称$F(x)$为$f(x)$的\textbf{原函数}. 求一个函数的原函数称为\textbf{不定积分}. 它们的关系用符号记为
+$$
+\mathrm{d} F(x) = f(x) \mathrm{d} x, \, \int f(x) \mathrm{d}x = F(x)  + C 
+$$
+其中$C$为任意的常数. 
+
+\subsection{原函数的代数运算}
+\begin{enumerate}
+\item $\int [ f(x) \pm g(x)] \mathrm{d}x = \int f(x) \mathrm{d} x  \pm \int g(x) \mathrm{d} x $
+\item $\int \alpha f(x) \mathrm{d}x = \alpha \int f(x) \mathrm{d} x$
+\item $\int [\alpha f(x)  + \beta g(x)]\mathrm{d}x = \alpha \int f(x) \mathrm{d} x + \beta \int g(x) \mathrm{d} x $
+\end{enumerate}
+
+\subsection{分部积分法}
+\paragraph{}
+对于函数$f(x), g(x)$，因为$(f(x) g(x))' = f'(x)g(x) + f(x)g'(x)$，为了方便，用微分的记号$\mathrm{d} (f(x)g(x)) = g(x) \mathrm{d}(f(x)) + f(x) \mathrm{d}(g(x))$，为两边加一个积分符号，因此
+\begin{align*}
+\int \mathrm{d} (f(x)g(x)) & = \int g(x) \mathrm{d}(f(x)) + \int f(x) \mathrm{d}(g(x)) \\
+f(x) g(x) & = \int g(x) \mathrm{d}(f(x)) +  \int f(x) \mathrm{d}(g(x)) \\
+f(x) g(x) & = \int g(x) f'(x) \mathrm{d}x +  \int f(x) g'(x) \mathrm{d}x \\
+\int f(x) g'(x) \mathrm{d}x  & = f(x) g(x)  -   \int g(x) f'(x) \mathrm{d}x
+\end{align*}
+分部积分法可以用于求一些函数乘积的原函数.
+
+\paragraph{}
+例如，求$\int x \sin{x} \mathrm{d} x$，那么
+\begin{align*}
+f(x) & = x \\
+g(x) &= -\cos{x}
+\end{align*}
+因此，根据分部积分法
+$$
+\int x \sin{x} \mathrm{d} x = - x \cos{x} - \int (-\cos{x}) \mathrm{d}x = \sin{x} - x \cos{x} + C
+$$
+
+\subsection{换元积分法}
+\paragraph{}
+对于函数$f(t), t = g(x)$，那么求积分的话
+\begin{align*}
+\int f(t) \mathrm{d}t  = \int f(t) g'(x) dx = \int f(g(x)) g'(x) dx
+\end{align*}
+因此说，这类形式的积分可以用上面的公式来简化
+
+\paragraph{}
+例如，求$\int \sin^3{x} \cos{x} \mathrm{d}x$, 假设$t = \sin{x}$，于是
+\begin{align*}
+\int \sin^3{x} \cos{x} \mathrm{d} x & = \int t^3 \mathrm{d}t \\
+& = \frac{1}{4}t^4 + C \\
+& = \frac{1}{4} \sin^4{x} + C
+\end{align*}
+
+\subsection{特殊形式的函数}
+\subsubsection{有理函数}
+\paragraph{}
+一般将$n$次多项式记为$P_n = \alpha_0 + \alpha_1 x + \alpha_2 x^2 + \cdots + \alpha_n x^n$多项式, 这里假设有两个多项式$P(x), Q(x)$，将
+$$
+R(x) = \frac{P(x)}{Q(x)}
+$$
+称为\textbf{有理函数}. 
+
+\paragraph{}
+先介绍一些基础的有理函数的定积分
+
+\paragraph{}
+\textbf{1}. $\int \frac{1}{x + \alpha} \mathrm{d} x= \ln{|x + \alpha|} + C$
+
+\paragraph{}
+\textbf{2}. $\int \frac{1}{(x + \alpha)^n} \mathrm{d} x = - \frac{1}{(n -) (x + \alpha})^{n-1} + C$
+
+\paragraph{}
+\textbf{3}. $\int \frac{1}{x^2 + 1} \mathrm{d} x = \arctan{x} + C$
+
+\paragraph{}
+\textbf{4}. $\int \frac{1}{x^2 + \alpha} \mathrm{d} x$, 其中$\alpha \neq 0$, 可以转化为
+\begin{align*}
+\int \frac{1}{x^2 + \alpha} \mathrm{d} x & = \int \frac{1}{a} (\frac{1}{1 + (\frac{x}{\sqrt{a}})^2}) \mathrm{d} x  \\
+& = \frac{1}{a} \arctan{\frac{x}{\sqrt{a}}}
+\end{align*}
+
+
+\paragraph{}
+\textbf{5}. $\int \frac{1}{(x^2 + 1)^2} \mathrm{d} x $
+\begin{align*}
+\int \frac{1}{(x^2 + 1)^2} \mathrm{d} x & = \int \frac{(1 + x^2) - x^2}{(x^2 + 1)^2} \mathrm{d} x \\
+& =  \int  \frac{1}{x^2 + 1} \mathrm{d} x  - \int \frac{x^2}{(x^2 + 1)^2} \mathrm{d} x \\
+& = \arctan{x} - (-\frac{1}{2}) \int x \mathrm{d} \frac{1}{x^2 + 1} \\
+& = \arctan{x} + \frac{1}{2} (x \frac{1}{x^2 + 1} - \int \frac{1}{x^2 + 1} \mathrm{d} x ) \\
+& = \arctan{x} + \frac{1}{2} \frac{x}{x^2 + 1} - \frac{1}{2} \arctan{x} \\
+& = \frac{1}{2} (\arctan{x} + \frac{x}{x^2 + 1})
+\end{align*}
+
+\paragraph{}
+\textbf{6}. $\int \frac{1}{(x^2 + 1)^3} \mathrm{d} x $ 
+\begin{align*}
+\int \frac{1}{(x^2 + 1)^3} \mathrm{d} x & = \int \frac{(1 + x^2) - x^2}{(x^2 + 1)^3} \mathrm{d} x \\
+& =  \int  \frac{1}{(x^2 + 1)^2} \mathrm{d} x  - \int \frac{x^2}{(x^2 + 1)^3} \mathrm{d} x \\
+& = \frac{1}{2} (\arctan{x} + \frac{x}{x^2 + 1}) - (- \frac{1}{4}) \int x  \mathrm{d} \frac{1}{(x^2 + 1)^2} \\
+& =  \frac{1}{2} (\arctan{x} + \frac{x}{x^2 + 1}) + \frac{1}{4} ( x \frac{1}{(x^2 + 1)^2} - \int \frac{1}{(x^2 + 1)^2} \mathrm{d} x) \\
+& =  \frac{1}{2} (\arctan{x} + \frac{x}{x^2 + 1}) + \frac{1}{4} \frac{x}{(x^2 + 1)^2} - \frac{1}{8} (\arctan{x} + \frac{x}{x^2 + 1}) + C\\
+& = \frac{3}{8}  (\arctan{x} + \frac{x}{x^2 + 1}) + \frac{1}{4} \frac{x}{(x^2 + 1)^2} + C
+\end{align*}
+
+
+\paragraph{}
+\textbf{7}. $\int \frac{1}{(x + 1)(x + 2)} \mathrm{d} x $ 
+
+\begin{align*}
+\int \frac{1}{(x + 1)(x + 2)} \mathrm{d} x  & = \int (\frac{1}{x+1} - \frac{1}{x+2}) \mathrm{d} x \\
+& = ln|x+1| - ln|x+2| + C
+\end{align*}
+
+\paragraph{}
+\textbf{8}. $\int \ln{x} \mathrm{d} x $ 
+
+\begin{align*}
+\int \ln{x} \mathrm{d} x  & = x  \ln{x} - \int x \frac{1}{x} \mathrm{d} x \\
+& = x \ln{x} - x + C
+\end{align*}
+
+\paragraph{}
+\textbf{9}. $\int \frac{1}{x^3 + 1} \mathrm{d} x $ 
+
+\begin{align*}
+\int \frac{1}{x^3 + 1} \mathrm{d} x  & = \int (\frac{2 - x}{3(x^2 -x + 1)} +\frac{1}{3(x + 1)} ) \mathrm{d} x   \\
+& = \frac{1}{6} \int \frac{-2x + 1 + 3}{x^2 - x + 1} \mathrm{d} x  + \int \frac{1}{3(x + 1)} ) \mathrm{d} x  \\
+& = \frac{1}{6} \int \frac{-2x + 1}{x^2 - x + 1} \mathrm{d} x + \frac{1}{2} \int  \frac{1}{x^2 - x + 1} \mathrm{d} x + \frac{1}{3} \ln{|x + 1|} \\
+& = -\frac{1}{6} \int  \frac{2x - 1}{x^2 - x + 1} \mathrm{d} x + \frac{1}{2} \int  \frac{1}{x^2 - x + 1} \mathrm{d} x + \frac{1}{3} \ln{|x + 1|} \\
+& = -\frac{1}{6} \int \mathrm{d} \ln{(x^2 -x + 1)} +  \frac{1}{2}  \int  \frac{1}{x^2 - x + 1} \mathrm{d} x + \frac{1}{3} \ln{|x + 1|} \\
+& = -\frac{1}{6} \ln{(x^2 -x + 1)} +   \frac{1}{3} \ln{|x + 1|} + \frac{1}{2}  \int  \frac{1}{x^2 - x + 1} \mathrm{d} x  \\
+& = -\frac{1}{6} \ln{(x^2 -x + 1)} +   \frac{1}{3} \ln{|x + 1|} + \frac{1}{2} \int \frac{1}{(x - \frac{1}{2})^2 + \frac{3}{4})} \mathrm{d} x  \\
+& =  -\frac{1}{6} \ln{(x^2 -x + 1)} +   \frac{1}{3} \ln{|x + 1|} +  \frac{1}{2} \int \frac{1}{\frac{3}{4} ( (\frac{2}{\sqrt{3}} x - \frac{1}{\sqrt{3}})^2 + 1)} \mathrm{d} x  \\
+& =  -\frac{1}{6} \ln{(x^2 -x + 1)} +   \frac{1}{3} \ln{|x + 1|} +\frac{2}{3} \int  \frac{1}{ (\frac{2}{\sqrt{3}} x - \frac{1}{\sqrt{3}})^2 + 1} \mathrm{d} x  \\
+& =  -\frac{1}{6} \ln{(x^2 -x + 1)} +   \frac{1}{3} \ln{|x + 1|} +\frac{2}{3} \frac{\sqrt{3}}{2} \int \frac{1}{ (\frac{2}{\sqrt{3}} x - \frac{1}{\sqrt{3}})^2 + 1} \mathrm{d} (\frac{2}{\sqrt{3}} x - \frac{1}{\sqrt{3}} ) \\
+& =  -\frac{1}{6} \ln{(x^2 -x + 1)} +   \frac{1}{3} \ln{|x + 1|} + \frac{\sqrt{3}}{3} \arctan{(\frac{2x - 1}{\sqrt{3}})}  + C
+\end{align*}
+
+\paragraph{}
+还有更多类似的简单的多项式，那么对于更复杂一些的有理函数，可以转换成上述的更简单的形式，这样就可以求出定积分.
+
+\paragraph{}
+例如，求$\int \frac{x^2 + 1}{x^3 + 2x^2 -x - 2} \mathrm{d} x$
+\begin{align*}
+\int \frac{x^2 + 1}{x^3 + 2x^2 -x - 2} \mathrm{d} x & =  \int \frac{x^2 + 1}{(x-1)(x+1)(x+2)} \mathrm{d} x \\
+& =   \int (\frac{1}{3} \frac{1}{x-1} - \frac{1}{x+1} + \frac{5}{3} \frac{1}{x+2} ) \mathrm{d} x \\
+& = \frac{1}{3} \ln{|x-1|} - \ln{|x+1|} + \frac{5}{3} \ln{|x+2|} + C
+\end{align*}
+
+
+
+
+

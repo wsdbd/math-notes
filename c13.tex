@@ -1,0 +1,152 @@
+\section{多元函数微积分}
+
+\subsection{多元函数的极限和连续性}
+\paragraph{}
+在(8.1.1节)中提到过函数的极限，主要是指一元函数的极限，而对于多元函数，实际上只需要稍做更改. 对于$R^n$空间，也就是向量空间中，定义度量$d(x, y)$之后. 对于函数$f: R^n \to R$，有一个点$\textbf{a}$, 如果对于任何的$\varepsilon > 0$，存在一个数$\delta > 0$，使得任何的$\textbf{x}$, 且$0 < d(\textbf{x}, \textbf{a}) < \delta$，满足
+$$
+d(f(x), A) < \varepsilon
+$$
+那么就说，当$\textbf{x} \to \textbf{a}$时，函数$f(\textbf{x}$的极限为$A$，表示为
+$$
+\lim_{d(\textbf{x}, \textbf{a}) \to 0} f(\textbf{x}) = A
+$$
+对于$R^n$中的度量$d(x, y)$，这里使用范数(5.1.1小节)的定义，也就是对于向量$x = (x_1, x_2, \cdots, x_n)$和$y = (y_1, y_2, \cdots, y_n)$来说
+$$
+\parallel \textbf{x} \parallel = \sqrt{x_1^2 + \cdots + x_n^2}
+$$
+并且
+$$
+d(\textbf{x}, \textbf{y}) = \parallel \textbf{x} - \textbf{y} \parallel = \sqrt{(x_1 - y_1)^2 + \cdots + (x_n - y_n)^2}
+$$
+而对于$f: R^n \to R^m$而言，实际上可以看成是多个$f_i: R^n \to R$，例如说$v_1 = f_1(\textbf{x}), v_2 = f_2(\textbf{x}), \cdots, v_m = f_m(\textbf{x})$, 可以对它们独立的讨论，因此，这里将只考察$f: R^n \to R$的映射.
+
+\paragraph{}
+在(8.2.1小节)中提到函数的连续性，类似的对于$f: R^n \to R$定义域中的某一个向量$\textbf{x}_0$，如果
+$$
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} f(\textbf{x}) = f(\textbf{x}_0)
+$$
+那么称函数$f(\textbf{x})$在$\textbf{x}_0$这个点上\textbf{连续}.
+
+\subsection{偏导数}
+\subsubsection{全导数}
+\paragraph{}
+和(9.1.1小节)里类似，定义$f: R^n \to R$中的导数
+$$
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} \frac{f(\textbf{x}) - f(\textbf{x}_0)}{\parallel \textbf{x} - \textbf{x}_0 \parallel}
+$$
+这个极限存在，称为$f(\textbf{x})$在$\textbf{x}_0$处的\textbf{全导数}. 同样的记为$f'(\textbf{x}_0)$
+
+\subsubsection{方向导数}
+\paragraph{}
+设有非零向量$\textbf{v}$，如果极限
+$$
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} \frac{f(\textbf{x}_0 + d(\textbf{x}, \textbf{x}_0) \textbf{v}) - f(\textbf{x}_0)}{d(\textbf{x}, \textbf{x}_0)}
+$$
+存在，称为函数$f(\textbf{x})$在$\textbf{x}_0$处沿着向量$\textbf{v}$处可微，这个导数称为\textbf{方向导数}. 记为$D_{\textbf{v}} f(\textbf{x}_0)$.
+
+\subsubsection{偏导数}
+\paragraph{}
+如果非零向量$\textbf{v}$是一个标准基底, 见(3.3.3小节)中，将这个方向导数
+$$
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} \frac{f(\textbf{x}_0 + d(\textbf{x}, \textbf{x}_0) \textbf{e}_i) - f(\textbf{x}_0)}{d(\textbf{x}, \textbf{x}_0)}
+$$
+称为函数$f(\textbf{x})$在$\textbf{x}_0$处关于$x_i$的\textbf{偏导数}. 记为$\frac{\partial f}{\partial x_i} (\textbf{x}_0)$.
+
+\paragraph{}
+偏导数可以理解成对于某个变量的导数，将其它的变量当成常数. 例如$f(x, y) = x^2 y + y$，那么$\frac{\partial f}{\partial x} = 2xy$
+
+\subsubsection{梯度}
+\paragraph{}
+将$f: R^n \to R$在$\textbf{a}$处的各个变量的偏导数组成的向量，称为$f(\textbf{x})$在$\textbf{a}$处的\textbf{梯度}. 记为
+$$
+\nabla f(\textbf{a}) = \big( \frac{\partial f}{x_1}(\textbf{a}), \cdots, \frac{\partial f}{x_n}(\textbf{a}) \big)
+$$
+
+\subsection{压缩映射}
+\paragraph{}
+在度量空间中，对于函数$f: R^n \to R^n$，如果存在一个$0 < c < 1$使得
+$$
+d(f(\textbf{x}), f(\textbf{y})) \leq c \cdot d(\textbf{x}, \textbf{y})
+$$
+那么就称这个函数是\textbf{压缩映射}, $c$为\textbf{压缩常数}.
+
+\paragraph{}
+\textbf{压缩映射定理}\, 如果$f(\textbf{x}) = \textbf{x}$，那么称$\textbf{x}$为\textbf{不动点}. 对于$f: X \to X$，如果$X$是完备的，那么严格压缩映射必然有一个不动点. 
+
+\subsection{反函数定理}
+\paragraph{}
+在(1.3.2小节)中提到了反函数，一个函数有反函数的充分必要条件是它是个一一映射(双射). 但是不是所有的函数都存在反函数，例如$\sin(x)$就没有反函数，严格上讲$\arcsin(x)$不是它的反函数，它是$\sin(x)$在$[-\frac{\pi}{2}, \frac{\pi}{2}]$区间中的反函数. 所以这里我们讨论关于函数局部可逆. 
+
+\paragraph{}
+例如函数$f(\textbf{x})$如果是连续可微(或称为连续可导)的，如果$f'(\textbf{x}_0) = \textbf{0}$，那么在点$\textbf{x}_0$的附近并不单调，但是如果$f'(\textbf{x}_0) \neq 0$，那么在这个点的附近就是严格单调的，也就是说在这个点的附近的区域是可逆的.
+
+\paragraph{}
+\textbf{反函数定理}\, 设$E$是$R^n$中的开集，如果$f: E\to R^n$, 并且$f$是连续可微的，如果在$\textbf{x}_0$点处，$f'(\textbf{x}_0)$是可逆的，那么存在一个开集$U$，$\textbf{x}_0 \in U$，以及开集$V$，$f(\textbf{x}_0) \in V$，使得函数在$U$内存在逆映射，$f^{-1}: V \to U$，并且$f^{-1}$在$f(\textbf{x}_0)$处可微，而且
+$$
+(f^{-1})' (f(\textbf{x}_0)) = (f'(\textbf{x}_0))^{-1}
+$$
+在这里简单的证明$f: E \to R$的情况下，令$f'(\textbf{x}_0) = a$，$y = f(\textbf{x}')$， 现在先证明$f'(\textbf{x})$在$\textbf{x}_0$处连续，因为$f$是连续的，所以在$\textbf{x}_0$点的一个开球$B(\textbf{x}, \textbf{r})$上，$f$有界，由(8.2.3小节)的魏尔斯特拉最大值定理. 也就是在这个开球中$f(\textbf{x})$是有限的，并且因为可微所以导数也是有限的.  根据导数的定义
+$$
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} \frac{f(\textbf{x}) - f(\textbf{x}_0)}{\textbf{x} - \textbf{x}_0} = f'(\textbf{x}_0)
+$$
+先看左侧，因为$d(\textbf{x}, \textbf{x}_0) \to 0$时
+\begin{align*}
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} \big(f(\textbf{x}) - f(\textbf{x}_0\big) & = \lim_{\textbf{x} \to \textbf{x}_0} f(\textbf{x}) - f(\textbf{x}_0) \\
+& = f(\textbf{x}_0) - f(\textbf{x}_0) \\
+& = 0
+\end{align*}
+而且
+$$
+\lim_{\textbf{x} \to \textbf{x}_0} (\textbf{x} - \textbf{x}_0) = 0
+$$
+所以是一个$\frac{0}{0}$形的，根据洛必达法则
+\begin{align*}
+\lim_{d(\textbf{x}, \textbf{x}_0) \to 0} \frac{f(\textbf{x}) - f(\textbf{x}_0)}{\textbf{x} - \textbf{x}_0}  & = \lim_{\textbf{x} \to \textbf{x}_0}  \frac{f'(\textbf{x})}{1} \\
+& = \lim_{\textbf{x} \to \textbf{x}_0} f'(\textbf{x})
+\end{align*}
+因为在$\textbf{x}_0$的开球上极限必然存在(不会是无限), 所以
+$$
+\lim_{\textbf{x} \to \textbf{x}_0} f'(\textbf{x}) = f'(\textbf{x})
+$$
+所以说$f'(\textbf{x})$在$\textbf{x}_0$处连续，也就是说，存在一个$\delta > 0$，使得$0 < d(\textbf{x}, \textbf{x}_0) < \delta$，对任何的$\varepsilon > 0$，都能满足
+$$
+|f(\textbf{x}) - a | < \varepsilon
+$$
+因此，如果取$\varepsilon \leq \frac{a}{2}$时，必存在一个$\delta > 0$，换句话说，存在一个开球$B(\textbf{x}_0, \delta)$使得$|f(\textbf{x}) - a | < \frac{a}{2}$. ， 构造一个函数
+$$
+g(\textbf{x}, y) = \textbf{x} + a^{-1} (y - f(\textbf{x})) 
+$$
+取偏导数
+$$
+\frac{\partial g}{\partial \textbf{x}} (\textbf{x}, y) =  \frac{a - f'(\textbf{x})}{a}
+$$
+也就是说存在一个开球$B(\textbf{x}_0, \delta)$使得
+$$
+|\frac{\partial g}{\partial \textbf{x}} (\textbf{x}, y)| < \frac{|a - f'(\textbf{x})|}{|a|} < \frac{1}{2}
+$$
+根据中值定理
+$$
+|g(\textbf{x}_2, y) - g(\textbf{x}_1, y)| < \frac{1}{2} |\textbf{x}_2 - \textbf{x}_1|
+$$
+因此$g(\textbf{X}, y)$是一个压缩映射，并且仅存在一个不动点，也就是存在一个$\textbf{x}'$使得
+$$
+g(\textbf{x}', y) = \textbf{x}' + \frac{y - f(\textbf{x}')}{a} = \textbf{x}'
+$$
+因此
+$$
+y = f(\textbf{x})
+$$
+对于每一个$y$都只有一个$\textbf{x}$使其成为不动点，因此$y$是一个一一映射，也就证明了在$\textbf{x}_0$处存在一个开球使得函数的反函数存在.
+
+\subsection{隐函数定理}
+\paragraph{}
+隐函数是指$f(\textbf{x}) = 0$(注意其中的$\textbf{x}$是向量)这样的多元函数，和我们一般而言的$y = f(\textbf{x})$有区别，例如$x^2 + y^2 - 1 = 0$就是隐函数，它是一个单位圆.  如果稍微转换一下那么反函数就是一个特殊的隐函数，例如$y - f(\textbf{x}) = 0$就变成隐函数了. 隐函数定理的目的是判断一个隐函数在一定的局部内是否可以用$y = f(x)$的形式给出来.  
+
+\paragraph{}
+\textbf{隐函数定理}\, 
+
+
+
+\subsection{重积分}
+
+

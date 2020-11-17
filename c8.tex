@@ -1,0 +1,170 @@
+\section{函数的极限和连续性}
+\subsection{函数的极限}
+
+\subsubsection{函数的极限}
+\paragraph{}
+有函数$f(x)$，函数上有一个点$a$, 如果对任何的$\varepsilon > 0$，存在一个数$\delta > 0$, 使得任何的$x$, 且$0 < |x -a| < \delta$，满足
+$$
+|f(x) - A| < \varepsilon
+$$
+那么，就说当$x \to a$时，函数$f(x)$的极限为$A$.  将函数的极限表示为
+$$
+\lim_{x\to a}f(x) = A
+$$
+
+\subsubsection{函数极限的代数运算}
+\paragraph{}
+设有函数$f(x), g(x)$，且$\lim_{x\to a} f(x) = A$, $\lim_{x\to a} g(x) = B$
+\begin{enumerate}
+\item $\lim_{x\to a}(f+ g)(x) = A + B$
+\item $\lim_{x\to a}(f \cdot g)(x) = A \cdot B$
+\item $\lim_{x\to a}(f / g)(x) = A / B$, 如果$B \neq 0$, 且$g(x) \neq 0$
+\end{enumerate}
+
+\subsubsection{函数极限不等式}
+\paragraph{}
+设有函数$f(x), g(x)$，且$\lim_{x\to a} f(x) = A$, $\lim_{x\to a} g(x) = B, $
+\begin{enumerate}
+\item 如果$A < B$，那么在点$a$的一个去心领域中，其中的每个点$f(x) < g(x)$
+\item 如果有函数$h(x)$，并且$f(x) \leq h(x) \leq g(x)$，并且如果$\lim_{x\to a} f(x) = \lim_{x\to a} g(x) = A$，那么$\lim_{x\to a} h(x) = A$.
+\item 如果在$a$的某个去心领域中,$f(x) > g(x)$那么$A \geq B$, 如果$f(x) \geq g(x)$，那么$A \geq B$.
+\item 如果在$a$的某个去心领域中,$f(x) > B$那么$A \geq B$, 如果$f(x) \geq B$，那么$A \geq B$.
+
+\end{enumerate}
+
+
+\subsubsection{函数极限存在的判断}
+\paragraph{}
+\textbf{a}. 函数$f(x)$，当$x \to a$存在极限$A$的充分必要条件是，对任何收敛于$a$的数列$\{ x_n \}, x_n \in E\\a$，数列$\{f(x_n)\}$收敛，且收敛于$A$.
+
+\paragraph{}
+\textbf{b}. 单调递增函数$f(x)$，若有极限点$s = \sup E$，那么$x \to s$时，函数有极限的充分必要条件是它上有界. 对极限点$i = \inf E$，那么当$x \to i$时，函数有极限的充分必要条件是它下有界.
+
+
+\subsubsection{函数极限的例子}
+
+\paragraph{}
+\textbf{1}. $\lim_{x\to 0} \frac{\sin x}{x} = 1$
+
+\begin{figure}[h]
+\centering
+\ includegraphics[scale=0.3]{draw-08-01.png}
+\caption{半径为$1$的单位圆}
+\end{figure}
+
+\paragraph{}
+证明\:  如图所示，一个半径为$1$的单位圆，那么$\overline{0C} = \cos{x}$, $\overline{BC} = \sin{x}$, $\overline{OA} = \overline{OB} = 1$, $\stackrel\frown{AB} = x$, $\stackrel\frown{CD} = x \cos{x}$,  扇形$\sphericalangle{OCD}$，扇形$\sphericalangle{OAB}$，三角形$\bigtriangleup{OAB}$的面积分别为
+\begin{align*}
+S_{\sphericalangle{OCD}} & = \frac{1}{2} x \cos{x}^2  \\
+S_{\sphericalangle{OAB}} & = \frac{1}{2}  x \\
+S_{\bigtriangleup{OAB}} & = \frac{1}{2} \sin{x}
+\end{align*}
+因为$ S_{\sphericalangle{OCD}} < S_{\bigtriangleup{OAB}} < S_{\sphericalangle{OAB}}$，所以
+$$
+\frac{1}{2} x \cos{x}^2 <\frac{1}{2} \sin{x} <    \frac{1}{2} x
+$$
+这里只考虑$x > 0$的情况, $x < 0$的情况可以类似的证明，也就是说
+$$
+\cos{x}^2 < \frac{\sin{x}}{x} < 1
+$$
+因为$\lim_{x\to 0} cos{x}^2 = 1$，而且$\lim_{x \to 0} 1 = 1$，根据极限不等式，那么$\lim_{x\to 0} \frac{\sin{x}}{x} = 1$
+
+
+\paragraph{}
+\textbf{2}.  $\lim_{x \to \infty} (1 + \frac{1}{x})^x = e$
+
+\paragraph{}
+证明\: 在(7.1.6小节)里将数$e$定义为
+$$
+\lim_{n \to \infty} (1 + \frac{1}{n})^n
+$$
+这里尝试推广到任意的实数$x$而不是正整数.  为了方便，使用程序语言常用的$floor(x)$代表对数$x$向下取整，因此有不等式
+$$
+(1 + \frac{1}{floor(x) + 1})^{floor(x)} < (1 + \frac{1}{x})^x < (1 + \frac{1}{floor(x)})^{floor(x) + 1}
+$$
+这里因为$\frac{1}{floor(x) + 1} < \frac{1}{x}$, $floor(x) \leq x$, $\frac{1}{floor(x)} \geq \frac{1}{x}$, $floor(x) + 1 > x$. 并且我们知道
+$$
+\lim_{n\to \infty} (1 + \frac{1}{n + 1})^{n} = \lim_{n\to \infty} \frac{(1 + \frac{1}{n+1})^{n + 1}}{(1 + \frac{1}{n+1})} = \frac{ \lim_{n\to \infty} (1 + \frac{1}{n+1})^{n + 1}}{ \lim_{n\to \infty} (1 + \frac{1}{n+1}) } = \frac{e}{1} = e
+$$
+而
+$$
+\lim_{n\to \infty}  (1 + \frac{1}{n})^{n + 1} = \lim_{n\to \infty} (1 + \frac{1}{n})^{n} \cdot  \lim_{n\to \infty} (1 + \frac{1}{n}) = e \cdot 1 = e
+$$
+因此由极限的不等式可知$e \leq \lim_{x \to \infty} (1 + \frac{1}{x})^x \leq e$，
+所以
+$$
+\lim_{n \to \infty} (1 + \frac{1}{n})^n
+$$
+
+
+\subsubsection{大O和小o}
+\paragraph{}
+如果对于函数$f(x)$和$g(x)$，如果
+$$
+\lim_{x\to a} \frac{f(x)}{g(x)} = 1
+$$
+则称当$x \to a$时，$f(x)$和$g(x)$渐近等价，记为$f(x) \sim g(x)$
+
+\paragraph{}
+如果对于函数$f(x)$和$g(x)$，如果存在$a$的一个领域，使得
+$$
+|\frac{f(x)}{g(x)}| \leq K
+$$
+$K$为任意的实数，则记为$f(x) = O(g(x))$, 或者说如果$\lim_{x\to a}\frac{f(x)}{g(x)}$存在则$f(x) = O(g(x))$
+
+\paragraph{}
+如果对于函数$f(x)$和$g(x)$，$\lim_{x\to a}\frac{f(x)}{g(x)} = 0$，则记为$f(x)= o(g(x))$.
+
+\paragraph{}
+大$O$和小$o$在求极限的时候很有用，今后将在函数的级数展开中再次讨论.
+
+\subsubsection{左右极限}
+\paragraph{}
+对于函数$f(x)$，在定义域$E$中的某一点$x_0$，如果对于定义域中任何点$x_{0^-} < x_0$，由这些点组成的数列${x_{0^-}}$收敛于$a$，称这样的极限为$x_0$处的\textbf{左极限}, 记为$\lim_{x\to x_{0^-}} = a$，同样的定义$x_{0^+} > x_0$的数列组成的极限为\textbf{右极限}，记为$\lim_{x\to x_{0^+}} = b$. 如果$\lim_{x\to x_{0^-}} = \lim_{x\to x_{0^+}}$，则函数在$x_0$处存在极限，且它们的值相同.
+
+
+\subsection{连续性}
+
+\subsubsection{连续}
+\paragraph{}
+定义函数$f(x)$在定义域$E$中一点$x_0$，如果
+$$
+\lim_{x \to x_0} f(x) = f(x_0)
+$$
+那么称函数$f(x)$在$x_0$这个点\textbf{连续}.
+
+\paragraph{}
+如果函数$f(x)$在定义域中$E$处处连续，称$f(x)$为集合$E$的\textbf{连续函数}.
+
+\subsubsection{间断点}
+\paragraph{}
+如果函数$f(x)$在$x_0$处不连续，称$x_0$为函数$f(x)$的\textbf{间断点},  如果函数$f(x)$在$x_0$处$\lim_{x \to x_{0^-}} f(x) \neq f(x_0)$或者$\lim_{x \to x_{0^+}} f(x) \neq f(x_0)$那么称这样的间断点为\textbf{第一类间断点}，也称为可去间断点.  如果$f(x)$在$x_0$处的左右极限有一个不存在，那么称之为\textbf{第二类间断点}.
+
+\subsubsection{连续函数的性质}
+\paragraph{}
+\textbf{a}. 如果函数$f(x)$在集合$E$(定义域)的连续函数，那么函数在某个点$a$的邻域中有界. 
+
+\paragraph{}
+\textbf{b}. \textbf{波尔查诺定理}\, 若函数$f(x)$在闭区间$[a, b]$内连续的，如果$f(a) \cdot f(b) < 0$，那么存在一个点$c$使得$f(x) = 0$. 
+
+
+\paragraph{}
+\textbf{c}. \textbf{介值定理}\, 也称为波尔察诺-柯西第二定理 如果连续函数$f(x)$在点$a,b$中取值为$f(a) = A, f(b) = B， A < B$, 那么对任意的$C, A < C < B$，在$a, b$之间必然存在一点$c$，使得$f(c) = C$. 
+
+\paragraph{}
+\textbf{d}.  \textbf{魏尔斯特拉最大值定理}\, 函数$f(x)$在闭区间$[a, b]$中连续，则函数$f(x)$必有界.
+
+\subsubsection{一致连续}
+\paragraph{}
+若$f(x)$在定义域$E$中连续，对于任何一个数$\varepsilon > 0$，存在一个数$\delta > 0$，使得对于$E$中的任何一个点$x_0$满足
+$$
+|x - x_0| < \delta, |f(x) - f(x_0)| < \varepsilon
+$$
+称函数$f(x)$在$E$中\textbf{一致连续}，一致连续意味着$x$的变化足够小时,$f(x)$的变化也在足够小的范围内. 
+
+\paragraph{}
+若函数$f(x)$在闭区间$[a, b]$内连续，则它在这个区间内\textbf{一致连续}.
+
+
+
+

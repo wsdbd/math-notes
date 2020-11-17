@@ -1,0 +1,71 @@
+\section{排列组合}
+
+\paragraph{}
+一个集合$S$的一个划分是指这个集合的子集$S_1, S_2, \cdots, S_n$，满足
+$S = S_1 \cup S_2 \cup \cdots \cup S_n$，并且$S_i \cap S_j = \emptyset (i \neq j)$. 
+
+\paragraph{}
+另外将集合$S$的元素的数量记为$|S|$.
+
+\subsection{计数}
+
+\subsubsection{加法}
+\paragraph{}
+如果一个集合的$S$的一个划分$S_1, S_2, \cdots, S_n$，那么
+$$
+|S| = |S_1|+|S_2| + \cdots + |S_n|
+$$
+例如$S =  \{1, 2, 3, 4, 5, 6\}$，那么$|S| = |\{1\}| + |\{2, 3\}| + |\{4\}| + |\{5\}| + |\{6\}| = 1 + 2 + 1  + 1 + 1  = 6$
+
+\subsubsection{乘法}
+\paragraph{}
+设$S = \{(a, b) | a \in A, b \in B\}$，并且$|A| = p, |B| = q$，则
+$$
+|S| = p \times q
+$$
+
+\subsubsection{减法}
+设集合$A \subset S$，那么集合A的\textbf{补}记为$\overline{A}$，有时候也记为$A^c$，且$\overline{A} = S \setminus A = \{x \in S: x \notin A\} $，那么
+$$
+|A| = |S| - |\overline{A}|
+$$
+
+\subsubsection{除法}
+设集合$S$，将$S$划分成$k$个相同数量的子集，那么，那个子集的数量为
+$|S_i| =  |S| / k$, 当然前提是存在这样的划分.
+
+\subsection{排列}
+
+\paragraph{}
+一个元素个数为$n$的集合$S$的\textbf{r排列}，其中$ r \leq n $，表示为将集合$ S $中的元素组成个数为$ r $的有序对组成的集合, 例如$S = \{a, b, c\}$，那么$S$的2排列为
+$$
+ \{(a, b), (a, c), (b, a), (b, c), (c, a), (c, b)\}
+$$
+将这个r排列的个数记为$P(n , r)$，也有时候记为$A_n^r$
+
+\paragraph{}
+\textbf{定理} 对于正整数$n, r, r \leq n$，那么
+$$
+P(n, r) = n \times (n - 1) \times \cdots \times (n - r + 1)
+$$
+
+
+
+\subsection{组合}
+\paragraph{}
+如果说排列是集合$S$的有序选择，那么组合就是集合的无序选择，对于排列的r排列，那么\textbf{r组合}就表示集合$S$中元素数量为$r$的子集的集合，例如$S = \{a, b, c\}$，那么$S$的2组合为
+$$
+\{ \{a, b\}, \{a, c\}, \{b,c\} \}
+$$
+一般将r组合的数量记为${n \choose r }$，也有记为$C_n^r$
+
+\paragraph{}
+\textbf{定理} 对于正整数$n, r, r \leq n$，那么
+$$
+{n \choose r} = \frac{n!}{r!(n-r)!}
+$$
+
+\subsubsection{二项式系数}
+\paragraph{}
+如果用组合的思想，展开一个$(x + y)^n = (x+y)(x+y)\cdots(x+y)$,  
+

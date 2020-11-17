@@ -1,0 +1,61 @@
+\section{度量空间}
+
+\subsection{度量空间}
+
+\subsubsection{度量空间}
+对于集合$X$，将其中的元素称为\textbf{点}, 对于$X$中的两个点定义一个实数$d(x_1, x_2)$为\textbf{度量}或者我们熟悉的\textbf{距离}，这个度量有以下的性质
+\begin{enumerate}
+\item $d(x_1, x_2) = 0$，那么$x_1 = x_2$
+\item $d(x_1, x_2) \geq 0$
+\item $d(x_1, x_2) = d(x_2, x_1)$
+\item $d(x_1, x_2) \leq d(x_1, x_3) + d(x_2, x_3)$，即三角不等式
+\end{enumerate}
+称定义了\textbf{度量}的集合为一个\textbf{度量空间}. 度量空间可以记为$(X; d)$.
+
+\paragraph{}
+在(5.1节)中，提到了长度的概念, 这里主要研究的是距离. 赋范向量空间可以通过范数计算出距离，所以赋范向量空间也是一种度量空间.
+
+\subsubsection{开集与闭集}
+\paragraph{}
+设有一个实数$r > 0$，在度量空间$X$中某一个点$a$，称距离小于$r$的点组成的集合为一个\textbf{开球}, 记为
+$$
+B(a; r) = \{ x\in X| d(a, x) < r\}
+$$
+也称之为点$a$的一个\textbf{领域}.
+
+\paragraph{}
+一个集合$G \subset X$, 如果对于任何的$x \in G$，都有一个开球$B(x; r)$，使得$B(x; r) \subset G$，称这样的集合为\textbf{开集}. 如果$G$是度量空间$X$的开集，那么把$F = X - G$或者记为$F = X \ G$为\textbf{闭集}.  
+
+\paragraph{}
+如果针对开球再定义一个类似的\textbf{闭球}
+$$
+\overline{B(a; r)} = \{ x\in X| d(a, x) \leq r\}
+$$
+
+\paragraph{}
+如果一个点$x \in X$，并且集合$E \subset X$，那么如果这个点$x$存在一个邻域$V \subset E$，称这个点为\textbf{内点}. 如果点$x$是$E^c$或者记为$X - E$的一个内点，称它为\textbf{外点}.  如果点$x$的所有的领域都和集合$E$有交集，并且交集的元素至少有一个不为$x$，也可以说如果交集是一个无限集，这样的点称为\textbf{极限点}. 如果一个点$x$的有一个领域和$E$的交集只有一个点$x$，这样的点称为\textbf{孤立点}.
+
+\paragraph{}
+集合$E$和它的极限点组成的集合称之为集合$E$的\textbf{闭包}，记为$\overline{E}$. 如果$E = \overline{E}$那么$E$是闭集.
+
+\paragraph{}
+集合$E$的极限点组成和集合称为\textbf{导集}, 记为$E'$. 内点组成的集合称为\textbf{内核}, 记为$\mathring{E}$
+
+
+\subsection{紧集}
+\paragraph{}
+设$E$是度量空间$X$的子集，$E$的\textbf{开覆盖}指的是$X$的一组开子集$\{G_n\}$，使得$E \subset \cup_aG_a$. 
+
+\paragraph{}
+设$E$是度量空间$X$的子集，如果$E$的每个开覆盖都含有一个有限子覆盖. 称这样的集合为\textbf{紧集}.
+
+\paragraph{}
+因为紧集的概念不足够直观，直观的讲，在$R^n$的度量空间中，紧集就是一个有界的闭集. 在其它的度量空间中不一定成立. 本书也主要探讨$R^n$的空间.
+
+
+
+
+
+
+
+

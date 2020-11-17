@@ -1,0 +1,273 @@
+\section{极限}
+
+\subsection{数列的极限}
+
+\subsubsection{数列}
+\paragraph{}
+数列的极限看成是函数极限的一种特例，它的值域是自然数集$\textbf{N}$(这里的$\textbf{N}$不包括自然数0)，设一个集合$\{x_1, x_2, \cdots, x_n, \cdots \} \subset R$, $n$为$1 \to \infty$, 将数列简单的记为$\{x_n\}$, 对于任意的正实数$\varepsilon > 0$, 存在自然数$N$，使得当$n > N$时，有$|x_n - a| < \varepsilon$, 称数列$\{x_n\}$\textbf{收敛}于$a$, 将$a$称之为数列$\{x_n\}$的\textbf{极限}. 如果数列没有极限，那么称这个数列是\textbf{发散}的. 将数列的极限用符号表示为
+$$
+\lim_{n\to \infty} x_n = a
+$$
+
+\paragraph{}
+例如，数列$\{2, 2, 2, 2, \cdots \}$的极限，显然这个数列的极限是$2$.  这样的数列称为\textbf{常数列}.  这里可以选取任何一个$N \geq 1$，显然对于任何的$n \geq N \geq 1$都是$x_n - 2 = 0 < \varepsilon$，因为$\varepsilon > 0$. 
+
+\paragraph{}
+例如，数列$\{\frac{1}{n}\}$，$\lim_{n\to \infty} \frac{1}{n} = 0$，对于$\varepsilon > 0$，那么取$n > \frac{1}{\varepsilon}$，则$\frac{1}{n} < \varepsilon$，这里的$N$取为$\frac{1}{\varepsilon}$的下取整(类似于计算机中的下取整的函数ceil). 
+
+\paragraph{}
+例如，数列$\{(-1)^n\}$，是发散的，因为显然说，这个数列的极限可能是$1$或者$-1$，假设是$1$的话，那么，取$\varepsilon = 1$，对于任何$N >= 1$，如果$n > N$的话，如果$n$为奇数，那么$|(-1)^n - 1| = 2$，显然不满足极限的定义，类似的$-1$也不是它的极限. 
+
+\paragraph{}
+有数列$\{x_n\}$，如果对任何一个数$b$，存在一个正整数$N$，使得当$n > N$时，$x_n > b$，就说数列$\{x_n\}$趋于\textbf{正无穷}, 记为$\lim_{n\to \infty} x_n = +\infty$.  反之就是负无穷, 记为$\lim_{n\to \infty} x_n = -\infty$.  如果只有绝对值的情况下满足定义，即$|x_n| > |b|$，那么称数列$\{x_n\}$趋于\textbf{无穷}，记为$\lim_{n\to \infty} x_n = \infty$.
+
+\subsubsection{数列极限的性质}
+\paragraph{}
+数列极限有以下的一些性质
+\begin{enumerate}
+\item 如果数列有极限，那么极限是唯一的
+\item 收敛的数列必有界
+\item 数列的极限的邻域包含了数列有限多个数之外的所有项，也就是极限的邻域包含了数列的无限多个项. 邻域是指一个开区间$(a - \delta, a + \delta)$称为$a$的一个邻域，其中$\delta > 0$. 
+\item 若$\lim_{n\to \infty} x_n = a, \lim_{n\to \infty} y_n = b$, 如果$a > b$，那么存在一个$N$，当$n > N$时，$x_n > y_n$. 
+\item 若$\lim_{n\to \infty} x_n = a, \lim_{n\to \infty} y_n = b, \lim_{n\to \infty} z_n = c$,  若存在一个$N$，当$n > N$时，$x_n \leq y_n \leq z_n$，如果$a = c$，那么$a = b = c$. 
+\end{enumerate}
+
+\paragraph{}
+\textbf{极限的代数运算} \: 设$\lim_{n\to \infty} x_n = a, \lim_{n\to \infty} y_n = b$
+\begin{enumerate}
+\item  $\lim_{n\to \infty} (x_n + y_n) = a + b$;
+\item $\lim_{n\to \infty} (x_n \cdot y_n) = ab$;
+\item $\lim_{n\to \infty} (x_n / y_n) = a/b$，其中$y_n \neq 0, b \neq 0$.
+\end{enumerate}
+
+\subsubsection{数列极限存在的判断}
+\paragraph{}
+数列$\{x_n\}$, 如果对任何的$\varepsilon > 0$, 存在一个正整数$N$, 使得当$m > N, n > N$时，$|x_m - x_n| < \varepsilon$, 这样的数列称之为\textbf{柯西数列}.
+
+\paragraph{}
+\textbf{a}. 数列收敛的\textbf{柯西准则}, 即一个数列收敛的充分必要条件是它是柯西数列.
+
+\paragraph{}
+有数列$\{x_n\}$，如果对于任何的$n$，$x_{n+1} > x_n$，那么就称这样的数列是\textbf{严格递增数列}, 如果$x_{n+1} \geq x_n$，称之为\textbf{单调递增数列}. 类似的有\textbf{严格递减数列}和\textbf{单调递减数列}.
+
+\paragraph{}
+\textbf{b}. \textbf{魏尔斯特拉斯}定理，单调递增的数列有极限的充分必要条件是它有上界(1.4.1小节), 而且数列的极限为$\sup{x_n}$(上确界). 
+同样的，可以得出单调递减的数列有极限的充分必要条件是它有下界，并且数列的极限为$\inf{x_n}$(下确界).
+
+\paragraph{}
+从数列$\{x_n\}$中选取无限个元素组成的新的数列称为$\{x_n\}$的\textbf{子列}.
+
+\paragraph{}
+\textbf{c}. 数列收敛的充分必要条件是它的每个子列收敛. 并且所有的子列有相的极限.
+
+\paragraph{}
+定义数列$\{x_n\}$的\textbf{上极限}为
+$$
+\lim_{n\to \infty} \sup{x_n} = \inf_{n \geq 1} \sup_{k \geq n} x_k 
+$$
+也可以记为
+$$
+\lim_{n\to \infty} \sup{x_n}  = \lim_{n\to \infty}(\sup_{k\geq n} x_k)
+$$
+同样的定义\textbf{下极限}
+$$
+\lim_{n\to \infty} \inf{x_n} = \sup_{n \geq 1} \inf_{k \geq n} x_k 
+$$
+也可以记为
+$$
+\lim_{n\to \infty} \inf{x_n}  = \lim_{n\to \infty}(\inf_{k\geq n} x_k)
+$$
+
+\paragraph{}
+\textbf{d}. 数列$\{x_n\}$收敛的充分必要条件为它的上下极限相同.即
+$$
+\lim_{n\to \infty} \sup{x_n} = \lim_{n\to \infty} \inf{x_n}
+$$
+
+\subsubsection{无穷大和无穷小}
+\paragraph{}
+这里增加特殊的符号将$+\infty$表示为\textbf{正无穷}, 将$-\infty$表示为\textbf{负无穷}, 而$\infty$用来表示\textbf{无穷}大.  如果$x \to 0$称为\textbf{无穷小}.
+
+\paragraph{}
+对于求极限，遇到无穷大和无穷小，可以用以下的公式来简化计算.
+\begin{enumerate}
+\item $a + \infty = +\infty, a - \infty = -\infty$
+\item $+ \infty + \infty = +\infty,  - \infty - \infty = -\infty$
+\item $\frac{1}{\infty} = 0$, 即$\frac{1}{\pm \infty} = 0$
+\item $a \cdot 0 = 0$
+\end{enumerate}
+
+\subsubsection{一些例子}
+\paragraph{}
+\textbf{1}. $\lim_{n\to \infty} \frac{1}{n^p} = 0$, 其中$p > 0$
+\subparagraph{}
+证明\: 对于任意的$\varepsilon > 0$, 取$n > (1/\varepsilon)^{\frac{1}{p}}$. 那么
+$$
+n^p > (1/\varepsilon)
+$$
+也就是
+$$
+|\frac{1}{n^p} - 0|< \varepsilon
+$$
+满足极限的定义. 所以$\lim_{n\to \infty} \frac{1}{n^p} = 0$
+
+\paragraph{}
+\textbf{2}. $\lim_{n\to \infty} \sqrt[n]{p} = 1, p > 0$
+\subparagraph{}
+证明\: 当$p = 1$时，显然成立. 对于任意的$\varepsilon > 0$, 当$p > 1$时, 取$n > \frac{\ln (p) }{\ln (\varepsilon + 1)}$.
+$$
+1/n < \frac{\ln (\varepsilon + 1) }{\ln (p)}
+$$
+而$p > 1$时，$p^{1/n} > 1$, 也就是
+$$
+p^{1/n} - 1 < p^{\log_p(\varepsilon + 1)} - 1 = \varepsilon + 1 - 1 = \varepsilon
+$$
+满足极限的定义. 当$0 < p < 1$且$\varepsilon < 1$ 时，取$n > \frac{\ln (p) }{\ln (-\varepsilon + 1)}$
+$$
+1 - p^{1/n} < 1 - (-\varepsilon + 1) = \varepsilon
+$$
+
+\paragraph{}
+\textbf{3}. $\lim_{n\to \infty} \sqrt[n]{n} = 1$
+\subparagraph{}
+证明\:  设$x_n = \sqrt[n]{n} - 1$，当$n=1$的时候，显然$\sqrt[1]{1} = 1$, 因此讨论$n > 1$的情况，所以$x_n > 0$当$n > 1$
+$$
+n = (1 + x_n)^n
+$$
+而$(1 + x_n)^n$的展开当中有一项$\frac{n(n-1)}{2} x_n^2$，因为展开的所有的项都是正数的，所以
+$$
+n > \frac{n(n-1)}{2} x_n^2
+$$
+也就是$x_n < \sqrt{\frac{2}{n-1}}$, 因此对任意的$\varepsilon > 0$，只要取$n > \frac{2}{\varepsilon^2} + 1$的时候，$x_n = \sqrt[n]{n} - 1 < \varepsilon$.
+
+\paragraph{}
+\textbf{4}. $\lim_{n\to \infty} q^n = 0, |q| < 1$
+\subparagraph{}
+证明\:  取一个$n >\log_{|q|} \varepsilon $, 这里$\varepsilon < 1$, 因为$\varepsilon >= 1$时，任何的一个$|q|^n < 1$, 因此
+$$
+|q^n| = |q|^n < |q|^{\log_{|q|} \varepsilon}  =  \varepsilon
+$$
+满足极限的定义
+
+
+\paragraph{}
+\textbf{5}. $\lim_{n\to \infty} \frac{q^n}{n!} = 0$
+\subparagraph{}
+证明\:  因为$1 \geq q \leq 1$时，显然成立，考虑当$q > 1$的情况下，对于这个数列的第$n$项
+$$
+x_n = \frac{q^n}{n!}
+$$
+第$n+1$项
+$$
+x_{n+1} = \frac{q^{n+1}}{(n+1)!} = x_n \cdot \frac{q}{n+1}
+$$
+因此，当$n+1 > q$的时候，$x_{n+1} < x_n$，所以说，将数列的前几项去掉之后就变成一个最终单调递减的数列，并且有下界(大于$0$)，于是这个极限收敛，考虑另一个数列$\{\frac{q^{n+1}}{(n+1)!}\}$的极限，这个极限和数列$\{ \frac{q^n}{n!} \}$的极限是一样的
+\begin{align*}
+\lim_{n \to \infty} \frac{q}{n+1}  (\frac{q^n}{n!}) & =\lim_{n \to \infty} \frac{q}{n+1}  \lim_{n \to \infty}  (\frac{q^n}{n!})  \\
+&= 0 \cdot \lim_{n \to \infty}  (\frac{q^n}{n!})  = 0
+\end{align*}
+考虑$q < -1$的情况下，取两个子列，分别是$n$为偶数和奇数的情况下，$n$的偶数的情况下已经证明了收敛于$0$，类似的对于$n$为奇数的情况下同样的收敛于$0$.
+
+\subsubsection{数e}
+\paragraph{}
+数$e$是数学中非常重要的一个实数，这里用数列给出$e$的定义
+$$
+e := \lim_{n\to \infty} (1 + \frac{1}{n})^n
+$$
+
+
+\subsection{级数}
+
+\subsubsection{级数}
+\paragraph{}
+将数列$\{x_n\}$的和称为\textbf{级数}. 记为$\sum_{n=1}^\infty x_n$.  把$s_n = \sum_{k=1}^n a_k$称为级数的\textbf{部分和}，即$s_n = a_1 + a_2 + \cdots + a_n$. 例如$s_1 = a_1$, $s_2 = a_1 + a_2$.  如果部分和组成的数列有极限，将$\lim_{n\to \infty} s_n = s$称之为级数的\textbf{和}. 如果部分和存在极限称这个级数是\textbf{收敛}的，反之称为\textbf{发散}的.
+
+\subsubsection{级数极限存在的判断}
+\paragraph{}
+\textbf{a}. 级数收敛的\textbf{柯西准则}, 级数$\sum_{n\to \infty} a_n$收敛的充分必要条件是，对任何的$\varepsilon > 0$，存在着一个正整数$N$，使得当$m \geq n > N$时，
+$$
+|a_n + \cdots + a_m| < \varepsilon
+$$
+
+\paragraph{}
+\textbf{b}. 级数$\sum_{n\to \infty} a_n$ 收敛的一个必要条件(并非是充分条件)是$\lim_{n\to \infty} a_n = 0$.
+
+\paragraph{}
+\textbf{c}. 如果级数$\sum_{n=1}^\infty |a_n|$收敛，那么称级数$\sum_{n=1}^\infty a_n$\textbf{绝对收敛}, 如果级数绝对收敛，那么级数必收敛.
+
+\paragraph{}
+\textbf{d}. 级数加上或者去掉有限个项，不影响其收敛或者发散.
+
+\paragraph{}
+\textbf{e}. 级数$\sum_{n=1}^\infty a_n, \sum_{n=1}^\infty b_n$是两个非负项级数(即所有的项都是正数)，如果存在正整数$N$，当$n > N$时，$a_n \leq b_n$，那么如果级数$\sum_{n=1}^\infty b_n$收敛，那么$\sum_{n=1}^\infty a_n$也敛，如果$\sum_{n=1}^\infty a_n$发散，那么$\sum_{n=1}^\infty b_n$也发散.
+
+\paragraph{}
+\textbf{f}. \textbf{魏尔斯特拉斯比较检验法}, 级数$\sum_{n=1}^\infty a_n, \sum_{n=1}^\infty b_n$, 如果存在正整数$N$, 当$n > N$时，$|a_n \leq b_n$，那么如果级数$\sum_{n=1}^\infty b_n$收敛，级$\sum_{n=1}^\infty b_n$绝对收敛.
+
+\paragraph{}
+\textbf{g}. \textbf{柯西收敛准则}, 对于正项级数$\sum_{n=1}^\infty a_n$, 并且$\lim_{n\to \infty} \sqrt[n]{a_n} = p$. 
+\begin{enumerate}
+\item 如果$p < 1$，那么级数$\sum_{n=1}^\infty a_n$收敛;
+\item 如果$p > 1$,  那么级数$\sum_{n=1}^\infty a_n$发散;
+\item 如果$p = 1$，那么级数$\sum_{n=1}^\infty a_n$可能收敛也可能发散.
+\end{enumerate}
+
+\paragraph{}
+\textbf{h}. \textbf{达朗贝尔比值检验法}, 对级数$\sum_{n=1}^\infty a_n$，如果极限
+$$
+\lim_{n\to \infty}|\frac{a_{n+1}}{a_n}| = p
+$$
+存在，则
+\begin{enumerate}
+\item 如果$p < 1$，那么级数$\sum_{n=1}^\infty a_n$绝对收敛;
+\item 如果$p > 1$,  那么级数$\sum_{n=1}^\infty a_n$发散;
+\item 如果$p = 1$，那么级数$\sum_{n=1}^\infty a_n$可能绝对收敛也可能发散.
+\end{enumerate}
+
+\paragraph{}
+\textbf{i}. 如果$a_1 \geq a_2 \geq \cdots \geq 0$, 那么级数$\sum_{n\to \infty}a_n$收敛的充分必要条件是
+$$
+\sum_{k=0}^\infty 2^k a_{2^k} = a_1 + 2a_2 + 4a_4 + \cdots 
+$$
+收敛
+
+
+\subsubsection{一些例子}
+\paragraph{}
+\textbf{1}. 级数$\sum_{n\to \infty} \frac{1}{n}$称为\textbf{调和级数}, 调和级数发散, 根据柯西准则，如果对于一个正整数$N$，当$m \geq n > N$时, 取$m = 2n$时
+$$
+|\frac{1}{n+1} + \frac{1}{n+2} + \cdots + \frac{1}{2n}| > n \cdot \frac{1}{2n} = \frac{1}{2}
+$$
+所以对任意的$\varepsilon > 0$, 不成立, 因为当$\varepsilon \leq \frac{1}{2}$的时候就很容易构造使极限的定义不成立. 因此调和级数发散.
+
+\paragraph{}
+\textbf{2}. 级数$\sum_{n\to \infty} q^n$，称为\textbf{几何级数}或者\textbf{等比级数}, 显然，如果$q \geq 1$时$q^n \geq 1$，显然通项的极限不为0，显然这个时候是发散的，再看如果$q \leq -1$时, 对任何$\varepsilon > 0$时，若$ q^n < 0 < \varepsilon $，$q ^{n + 1} > | q^n | > 0$，因此这个时候当$\varepsilon < q^{n+1} + q^{n}$时不满足级数极限的定义，所以说若$|q| \geq 1$时，级数发散. 考察$|q| < 1$时，级数的部分和第$n$项
+$$
+s_n = 1 + q + \cdots + q^n = \frac{1 - q^{n+1}}{1 -q}
+$$
+因为$\lim_{n\to \infty}q^{n+1} = 0$,  所以$\lim_{n\to \infty} s_n = \frac{1}{1 - q}$，所以当$|q| < 1$时，级数的和为$\frac{1}{1-q}$.
+
+
+\paragraph{}
+\textbf{3}. 当$p > 1$时，级数$\sum_{n=1}^\infty \frac{1}{n^p}$收敛，当$p \leq 1$时发散. 当$p = 1$时，就是调和级数，已经证明调和级数发散.  当$p \leq 0$时，对任意的$n > 0, \frac{1}{n^p} \geq 1$, 因为通项的极限不为0，所以当$p \leq 0$时必发散.  当$p > 0$时，那么级数和
+$$
+\sum_{k=0}^\infty 2^k \frac{1}{(2^k)^p} = 1 + 2 \frac{1}{2^p} + \cdots  = \sum_{k=0}^\infty (2^{1-p})^k
+$$
+同时收敛或者同时发散. 由上一个例子，只有$|2^{1-p}| < 1$时，这个级数收敛，因此当$1 -p < 0$时，级数收敛，也就是说$p > 1$时级数$\sum_{n=1}^\infty \frac{1}{n^p}$收敛. 这类的级数称为\textbf{p-级数}.
+
+
+\subsubsection{幂级数}
+\paragraph{}
+把形如
+$$
+f(x) = \sum_0^\infty a_n (x - c)^n
+$$
+这样的级数，称为\textbf{幂级数}. 
+
+\subsubsection{数e}
+\paragraph{}
+数$e$用级数的方式可以表示成
+$$
+e = 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} + \cdots
+$$
+
